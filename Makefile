@@ -6,13 +6,14 @@
 #    By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/09 12:36:56 by ogregoir         ###   ########.fr        #
+#    Updated: 2024/02/09 18:46:59 by ogregoir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS    =	cub3d.c \
 			parse.c \
 			utils/utils.c \
+			verif_files.c \
 	
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f
