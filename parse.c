@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:31:46 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/09 13:35:22 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:50:10 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,72 @@ void ft_axe_y(int fd, t_global *global)
     close(fd);
 }
 
+char	**init_cpy(t_global *global)
+{
+	//Cpy depuis la pos de la map dans le fichier de config
+	char	**cp;
+	int		i;
+
+	i = -1;
+	cp = malloc(sizeof(char *) * (global->height + 1));
+	while (++i < global->height)
+		cp[i] = ft_strcpy(cp[i], global->map[i]);
+	cp[i] = NULL;
+	return (cp);
+}
+
+char	ft_init_player(t_global *global)
+{
+	if (global->player == 1)
+		return ('N');
+	if (global->player == 2)
+		return ('E');
+	if (global->player == 3)
+		return ('W');
+	if (global->player == 4)
+		return ('S');
+	return ('2');
+}
+
+void	print_map(char **cpy)
+{
+	int	i;
+
+	i = 0;
+	while(cpy[i])
+	{
+		printf("%s",cpy[i]);
+		i++;
+	}
+}
+
+void is_closed(t_global *global)
+{
+    char	**cpy;
+	char	player;
+	int		x;
+	int		y;
+    
+	cpy = init_cpy(global);
+	//player = ft_init_player(global);
+	player = 'N';
+	while (check_object(cpy, player) == 1)
+	{
+	x = player_pos_x(cpy, player);
+	y = player_pos_y(cpy, player);
+	if (cpy[y + 1][x] != player && cpy[y + 1][x] != 'X')
+		cpy[y + 1][x] = player;
+	if (cpy[y - 1][x] != player && cpy[y - 1][x] != 'X')
+		cpy[y - 1][x] = player;
+	if (cpy[y][x + 1] != player  && cpy[y][x + 1] != 'X')
+		cpy[y][x + 1] = player;
+	if (cpy[y][x - 1] != player && cpy[y][x - 1] != 'X')
+		cpy[y][x - 1] = player;
+	cpy[y][x] = 'X';
+	}
+	print_map(cpy);
+}
+
 void parsing_map(char **argv, t_global *global)
 {
     int     fd;
@@ -64,4 +130,5 @@ void parsing_map(char **argv, t_global *global)
     i++;
     global->map[i] = NULL;
     close(fd);
+	//is_closed(global);
 }
