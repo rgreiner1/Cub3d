@@ -1,25 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_strchri.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 12:47:08 by ogregoir         ###   ########.fr       */
+/*   Created: 2023/06/13 14:59:18 by ogregoir          #+#    #+#             */
+/*   Updated: 2023/06/13 14:59:54 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
-{	
-	void		*mlx;
-	t_global	global;
-	//int			i;
-	
-	(void)mlx;
-	(void)argc;
-	//i = 0;
-	parsing_map(argv, &global);
+int	ft_strchri(const char *str, int s)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (char)s)
+			return (i);
+		i++;
+	}
+	if ((char)s == 0)
+		return (i);
+	return (-1);
 }

@@ -1,42 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 12:45:50 by ogregoir         ###   ########.fr       */
+/*   Created: 2022/11/09 16:00:47 by ogregoir          #+#    #+#             */
+/*   Updated: 2024/02/09 11:45:21 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#include "libft.h"
 
-# include <stdlib.h>
-# include <fcntl.h>
-# include "utils/libft/libft.h"
-# include "mlx_linux/mlx.h"
-
-typedef struct s_global
+char	*ft_strrchr(const char *str, int s)
 {
-  //  struct s_data   data;
-    char            **map;
-    int             height;
+	int	i;
 
-
-}t_global;
-/*
-typedef struct s_data
-{
-
-
-}t_data;*/
-
-//parse
-void parsing_map(char **argv, t_global *global);
-
-//utils
-void    ft_error(char *str);
-
-#endif
+	i = ft_strlen((char *)str);
+	while (i >= 0)
+	{
+		if ((char)s == str[i])
+			return ((char *)str + i);
+		i--;
+	}
+	return (0);
+}

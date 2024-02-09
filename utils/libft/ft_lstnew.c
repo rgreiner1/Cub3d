@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 12:47:08 by ogregoir         ###   ########.fr       */
+/*   Created: 2023/03/23 15:07:02 by ogregoir          #+#    #+#             */
+/*   Updated: 2023/03/23 15:07:42 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
-{	
-	void		*mlx;
-	t_global	global;
-	//int			i;
-	
-	(void)mlx;
-	(void)argc;
-	//i = 0;
-	parsing_map(argv, &global);
+t_list	*ft_lstnew(int content)
+{
+	t_list	*list;
+
+	list = malloc(sizeof(t_list));
+	if (!list)
+		return (0);
+	list -> content = content;
+	list -> next = NULL;
+	return (list);
 }

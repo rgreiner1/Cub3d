@@ -1,25 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 12:47:08 by ogregoir         ###   ########.fr       */
+/*   Created: 2022/11/08 09:29:33 by ogregoir          #+#    #+#             */
+/*   Updated: 2022/11/28 22:29:47 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
-{	
-	void		*mlx;
-	t_global	global;
-	//int			i;
-	
-	(void)mlx;
-	(void)argc;
-	//i = 0;
-	parsing_map(argv, &global);
+void	*ft_memset(void *ptr, int value, size_t count)
+{
+	unsigned int	i;
+
+	i = 0;
+	while (i < count)
+	{
+		((unsigned char *)ptr)[i] = value;
+		i++;
+	}
+	return (ptr);
 }

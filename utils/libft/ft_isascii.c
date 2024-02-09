@@ -1,25 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 12:47:08 by ogregoir         ###   ########.fr       */
+/*   Created: 2022/11/07 17:53:36 by ogregoir          #+#    #+#             */
+/*   Updated: 2022/11/23 23:01:26 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "libft.h"
 
-int main(int argc, char **argv)
-{	
-	void		*mlx;
-	t_global	global;
-	//int			i;
-	
-	(void)mlx;
-	(void)argc;
-	//i = 0;
-	parsing_map(argv, &global);
+int	ft_isascii(int i)
+{
+	if (i >= 0 && i <= 127)
+		return (1);
+	else
+		return (0);
 }
