@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/10 01:18:55 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/10 14:25:38 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,5 +108,36 @@ void ft_save_data(t_global *global)
 	/*	else if (global->map[i] != NULL)
 			ft_error("string not authorize");*/
 		i++;
+	}
+}
+
+int	ft_order_files(t_global *global)
+{
+	int	i;
+	int	j;
+	int	save;
+
+	i = 0;
+	j = 0;
+	save = 0;
+	while(global->map[i])
+	{
+		if(ft_strncmp(global->map[i], global->data.NO, ft_strlen(global->map[i])) == 0 || \
+			ft_strncmp(global->map[i], global->data.WE, ft_strlen(global->map[i])) == 0 || \
+			ft_strncmp(global->map[i], global->data.EA, ft_strlen(global->map[i])) == 0 || \
+			ft_strncmp(global->map[i], global->data.SO, ft_strlen(global->map[i])) == 0)
+		{
+			if(save < i)
+				save = i;
+		}
+		else if (ft_strncmp(global->map[i], global->data.color_c, ft_strlen(global->map[i])) == 0 || \
+			ft_strncmp(global->map[i], global->data.color_f, ft_strlen(global->map[i])) == 0)
+		{
+			if(save < i)
+				save = i;
+		}
+		else if (ft_strchr(global->map[i], '1') != 0)
+			
+		
 	}
 }
