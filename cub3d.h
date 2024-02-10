@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 18:46:37 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/10 22:49:53 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ typedef struct s_data
     char    *SO;
     int     *color_c;
     int     *color_f;
-    
 
 
 }t_data;
@@ -42,10 +41,14 @@ typedef struct s_global
 
 
 //parse
-void parsing_map(char **argv, t_global *global);
+void    parsing_map(char **argv, t_global *global);
+int     *ft_copy_int(char *str, int j);
+char    *ft_copy_string(char *str, int j);
+int     ft_save_data(t_global *global);
+
 
 //utils
 void    ft_error(char *str);
-void    ft_save_data(t_global *global);
+
 
 #endif

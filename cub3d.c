@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/10 01:19:02 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/10 21:23:42 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,5 @@ int main(int argc, char **argv)
 	//i = 0;
 	parsing_map(argv, &global);
 	ft_save_data(&global);
+	ft_order_files(&global);
 }
