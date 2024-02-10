@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/09 18:46:20 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/10 01:18:55 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,29 @@ static char *ft_copy_string(char *str, int j)
 
 static void ft_range_color(char *temp)
 {
-	int     len;
+	int	len;
+	int	i;
 
 	len = ft_strlen(temp);
-	if(len == 3)
+	i = 0;
+	while(temp[i])
 	{
-		if(temp[0] < 48 && temp[0] > 50)
-			ft_error("the color is not between 0 and 255");
-		else if(temp[0] == 50 && (temp[1] < 48 && temp[1] > 53))
-			ft_error("the color is not between 0 and 255");
-		else if(temp[1] == 53 && (temp[2] < 48 && temp[2] > 53))
-			ft_error("the color is not between 0 and 255");
+		if(temp[i] == '\n')
+			break;
+		if(temp[i] >= 48 && temp[i] <= 57)
+		{
+			if(temp[0] < 48 && temp[0] > 50 && len == 3)
+				ft_error("the color is not between 0 and 255");
+			else if(temp[2] < 48 && temp[2] > 53 && len == 3)
+				ft_error("the color is not between 0 and 255");
+			else if(temp[3] < 48 && temp[3] > 53 && len == 3)
+				ft_error("the color is not between 0 and 255");
+		}
+		else
+		{
+			ft_error("character is not numeric");
+		}
+		i++;
 	}
 }
 
@@ -52,33 +64,19 @@ static int *ft_copy_int(char *str, int j)
 	char        **s;
 	char        *temp;
 	int         i;
-	int         l;
 
 	i = 0;
-	l = 0;
 	color = malloc(sizeof(int) * 3);
-	temp = ft_substr(str, j + 1, ft_strlen(str));
+	j += 1;
+	while(str[j] == 32)
+		j++;
+	temp = ft_substr(str, j, ft_strlen(str));
 	s = ft_split(temp, ',');
 	free(temp);
 	while(s[i])
-	{    
-		j = 0;
-		while(s[i][j])
-		{
-			if((s[i][j] != 32 || s[i][j] != '\0') && \
-				(s[i][j] >= 48 && s[i][j] <= 57))
-			{
-				temp[j] = s[i][j];
-			}
-			j++;
-		}
-		if(temp != NULL)
-		{
-			ft_range_color(temp);
-			color[l] = ft_atoi(temp);
-			l++;
-			free(temp);
-		}
+	{
+		ft_range_color(s[i]);
+		color[i] = ft_atoi(s[i]);
 		i++;  
 	}
 	return(color);
@@ -107,8 +105,8 @@ void ft_save_data(t_global *global)
 			global->data.color_f = ft_copy_int(global->map[i], j);
 		else if(global->map[i][j] == 'C')
 			global->data.color_c = ft_copy_int(global->map[i], j);
-		else if (global->map[i] != NULL)
-			ft_error("string not authorize");
+	/*	else if (global->map[i] != NULL)
+			ft_error("string not authorize");*/
 		i++;
 	}
 }
