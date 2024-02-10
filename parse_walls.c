@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:24 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/10 15:31:59 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:09:05 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_check_wall(t_global *global, char **cpy, int i, int j)
 		ft_error("Error, map is not closed by walls");
 }
 
-void is_closed(t_global *global)
+void verif_map(t_global *global)
 {
     char	**cpy;
 	int		i;

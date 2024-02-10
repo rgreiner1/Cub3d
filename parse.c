@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:31:46 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/10 15:59:05 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/10 16:08:49 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,5 @@ void	parsing_map(char **argv, t_global *global)
 	i++;
 	global->map[i] = NULL;
 	close(fd);
-	//is_closed(global);
+	//verif_map(global);
 }
