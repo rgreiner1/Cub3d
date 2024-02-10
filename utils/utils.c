@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/09 16:59:41 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/10 12:31:25 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,69 +16,6 @@ void    ft_error(char *str)
 {
     ft_putendl_fd(str, 1);
     exit(1);
-}
-
-int	player_pos_x(char **map, char cmp)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			if (map[i][j] == cmp)
-				return (j);
-		j++;
-		}
-	j = 0;
-	i++;
-	}
-	return (0);
-}
-
-int	player_pos_y(char **map, char cmp)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			if (map[i][j] == cmp)
-				return (i);
-		j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (0);
-}
-
-int	check_object(char **map, char cmp)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[i])
-	{
-		while (map[i][j])
-		{
-			if (map[i][j] == cmp)
-				return (1);
-		j++;
-		}
-		j = 0;
-		i++;
-	}
-	return (0);
 }
 
 char	*ft_strcpy(char *dest, char *src)

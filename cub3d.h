@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/09 16:46:22 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/10 15:31:41 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,12 @@ typedef struct s_data
 
 //parse
 void parsing_map(char **argv, t_global *global);
+void	is_closed(t_global *global);
+void	ft_verif_map_content(char **cpy, int player, int i, int j);
 
 //utils
 void    ft_error(char *str);
-int		player_pos_y(char **map, char cmp);
-int		player_pos_x(char **map, char cmp);
-int		check_object(char **map, char cmp);
 char	*ft_strcpy(char *dest, char *src);
-
+int		ft_longest(t_global *global);
 
 #endif

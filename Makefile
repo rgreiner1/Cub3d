@@ -6,12 +6,13 @@
 #    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/09 18:52:06 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/02/10 12:35:06 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS    =	cub3d.c \
 			parse.c \
+			parse_walls.c \
 			utils/utils.c \
 	
 OBJS    =   ${SRCS:.c=.o}
