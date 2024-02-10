@@ -6,7 +6,7 @@
 #    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/10 15:44:26 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/02/10 15:45:23 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,6 @@ fclean: clean
 	$(RM) $(LIBFT) $(MLX_AR)
 	$(RM) $(LIBFT) $(MLX_AR)
 	make fclean -C utils/libft
-	make clean -C mlx_linux
 	make clean -C mlx_linux
 re:	fclean all
 %.o: %.c
