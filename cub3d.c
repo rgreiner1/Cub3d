@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/10 21:23:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/11 00:42:10 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,13 @@ int main(int argc, char **argv)
 {	
 	void		*mlx;
 	t_global	global;
+	int			start;
 	//int			i;
 	
 	(void)mlx;
 	(void)argc;
-	//i = 0;
+	start = 0;
+	//i = -1;
 	parsing_map(argv, &global);
-	ft_save_data(&global);
-	ft_order_files(&global);
+	ft_save_map(&global, start);
 }

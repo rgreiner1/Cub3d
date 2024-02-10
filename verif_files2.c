@@ -66,17 +66,15 @@ char	*ft_sup_space(char *str)
 	char	*s;
 
 	i = 0;
-
 	len = ft_strlen(str);
 	s = NULL;
-	while(str[i] == 32)
+    while(str[i] == 32)
 		i++;
 	while(str[len] != ft_isdigit(str[len]))
 		len--;
-	i++;
-	len--;
 	len -= i;
-	s = ft_substr(str, i + 1, len);
+	s = ft_substr(str, i, len);
+    return(s);
 }
 
 int *ft_copy_int(char *str, int j)
@@ -96,7 +94,7 @@ int *ft_copy_int(char *str, int j)
 	free(temp);
 	while(s[i])
 	{
-		temp = ft_sup_space(s);
+		temp = ft_sup_space(s[i]);
 		ft_range_color(temp);
 		color[i] = ft_atoi(temp);
 		i++;

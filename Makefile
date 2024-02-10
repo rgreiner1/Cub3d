@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/10 15:45:23 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/02/10 23:06:17 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS    =	cub3d.c \
 			parse_walls.c \
 			utils/utils.c \
 			verif_files.c \
+			verif_files2.c \
 	
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f
