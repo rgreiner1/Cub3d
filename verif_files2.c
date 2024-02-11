@@ -12,50 +12,49 @@
 
 #include "cub3d.h"
 
-char *ft_copy_string(char *str, int j)
+char	*ft_copy_string(char *str, int j)
 {
-	int     start;
-	char    *s;
-	
+	int		start;
+	char	*s;
+
 	start = 0;
 	s = NULL;
 	j += 2;
-	while(str[j] == 32)
+	while (str[j] == 32)
 		j++;
 	start = j;
-	while(str[j] != 32)
+	while (str[j] != 32)
 		j++;
 	s = ft_substr(str, start, j);
-	return(s);
+	return (s);
 }
 
-void ft_range_color(char *temp)
+void	ft_range_color(char *temp)
 {
 	int	len;
 	int	i;
 
 	len = ft_strlen(temp);
-	i = 0;
-	if(len > 3)
+	i = -1;
+	if (len > 3)
 		ft_error("a color is not correct");
-	while(temp[i])
+	while (temp[++i])
 	{
-		if(temp[i] == '\n')
-			break;
-		if(temp[i] >= 48 && temp[i] <= 57)
+		if (temp[i] == '\n')
+			break ;
+		if (temp[i] >= 48 && temp[i] <= 57)
 		{
-			if(temp[0] < 48 && temp[0] > 50 && len == 3)
+			if (temp[0] < 48 && temp[0] > 50 && len == 3)
 				ft_error("the color is not between 0 and 255");
-			else if(temp[2] < 48 && temp[2] > 53 && len == 3)
+			else if (temp[2] < 48 && temp[2] > 53 && len == 3)
 				ft_error("the color is not between 0 and 255");
-			else if(temp[3] < 48 && temp[3] > 53 && len == 3)
+			else if (temp[3] < 48 && temp[3] > 53 && len == 3)
 				ft_error("the color is not between 0 and 255");
 		}
 		else
 		{
 			ft_error("character is not numeric");
 		}
-		i++;
 	}
 }
 
@@ -68,31 +67,31 @@ char	*ft_sup_space(char *str)
 	i = 0;
 	len = ft_strlen(str);
 	s = NULL;
-    while(str[i] == 32)
+	while (str[i] == 32)
 		i++;
-	while(str[len] != ft_isdigit(str[len]))
+	while (str[len] != ft_isdigit(str[len]))
 		len--;
 	len -= i;
 	s = ft_substr(str, i, len);
-    return(s);
+	return (s);
 }
 
-int *ft_copy_int(char *str, int j)
+int	*ft_copy_int(char *str, int j)
 {
-	int         *color;
-	char        **s;
-	char        *temp;
-	int         i;
+	int		*color;
+	char	**s;
+	char	*temp;
+	int		i;
 
 	i = 0;
 	color = malloc(sizeof(int) * 3);
 	j += 1;
-	while(str[j] == 32)
+	while (str[j] == 32)
 		j++;
 	temp = ft_substr(str, j, ft_strlen(str));
 	s = ft_split(temp, ',');
 	free(temp);
-	while(s[i])
+	while (s[i])
 	{
 		temp = ft_sup_space(s[i]);
 		ft_range_color(temp);
@@ -100,5 +99,5 @@ int *ft_copy_int(char *str, int j)
 		i++;
 	}
 	free(temp);
-	return(color);
+	return (color);
 }
