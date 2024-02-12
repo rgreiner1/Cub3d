@@ -15,17 +15,22 @@
 char	*ft_copy_string(char *str, int j)
 {
 	int		start;
+	int		len;
 	char	*s;
 
 	start = 0;
+	len = 0;
 	s = NULL;
 	j += 2;
 	while (str[j] == 32)
 		j++;
 	start = j;
-	while (str[j] != 32)
+	while (str[j] != 32 && str[j] != '\0')
+	{
+		len++;
 		j++;
-	s = ft_substr(str, start, j);
+	}
+	s = ft_substr(str, start, len);
 	return (s);
 }
 

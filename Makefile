@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/10 23:06:17 by marvin           ###   ########.fr        #
+#    Updated: 2024/02/12 18:47:27 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,7 @@ SRCS    =	cub3d.c \
 			utils/utils.c \
 			verif_files.c \
 			verif_files2.c \
+			mini_map.c \
 	
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f

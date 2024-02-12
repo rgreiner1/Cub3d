@@ -3,24 +3,33 @@
 /*                                                        :::      ::::::::   */
 /*   parse_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:24 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/11 03:48:44 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:16:54 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
+
+int		ft_map_len(char **map)
+{
+	int len;
+
+	len = 0;
+	while (map[len])
+		len++;
+	return (len);
+}
 char	**init_cpy(t_global *global)
 {
-	//Cpy depuis la pos de la map dans le fichier de config
 	char	**cp;
 	int		i;
 
 	i = -1;
-	cp = malloc(sizeof(char *) * (global->height + 1));
-	while (++i < global->height)
+	cp = malloc(sizeof(char *) * (ft_map_len(global->map) + 1));
+	while (++i < ft_map_len(global->map))
 	{
 		cp[i] = ft_calloc(ft_longest(global), 1);
 		cp[i] = ft_memcpy(cp[i], global->map[i], ft_strlen(global->map[i]));
@@ -32,17 +41,17 @@ char	**init_cpy(t_global *global)
 void	ft_check_wall(t_global *global, char **cpy, int i, int j)
 {
 	if (i == 0)
-		ft_error("Error, map is not closed by walls");
+		ft_error("Map is not closed by walls");
 	if (i == global->height - 1)
-		ft_error("Error, map is not closed by walls");
+		ft_error("Map is not closed by walls");
 	if (cpy[i - 1][j] == '\n' || cpy[i - 1][j] == 32 || cpy[i - 1][j] == '\0')
-		ft_error("Error, map is not closed by walls");
+		ft_error("Map is not closed by walls");
 	if (cpy[i + 1][j] == '\n' || cpy[i + 1][j] == 32 || cpy[i + 1][j] == '\0')
-		ft_error("Error, map is not closed by walls");
+		ft_error("Map is not closed by walls");
 	if (cpy[i][j - 1] == '\n' || cpy[i][j - 1] == 32 || cpy[i][j - 1] == '\0')
-		ft_error("Error, map is not closed by walls");
+		ft_error("Map is not closed by walls");
 	if (cpy[i][j + 1] == '\n' || cpy[i][j + 1] == 32 || cpy[i][j + 1] == '\0')
-		ft_error("Error, map is not closed by walls");
+		ft_error("Map is not closed by walls");
 }
 
 void	verif_map(t_global *global)
@@ -60,9 +69,7 @@ void	verif_map(t_global *global)
 		{
 			if (cpy[i][j] == '0' || cpy[i][j] == 'N' || cpy[i][j] == 'S' \
 				|| cpy[i][j] == 'E' || cpy[i][j] == 'W')
-			{
 				ft_check_wall(global, cpy, i, j);
-			}
 			j++;
 		}
 		i++;

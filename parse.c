@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:31:46 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/12 10:45:46 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/12 15:16:37 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,17 +71,17 @@ void	ft_verif_map_content(char **cpy, int player, int i, int j)
 			cpy[i][j] == 'E' || cpy[i][j] == 'W')
 				player++;
 			if (player > 1)
-				ft_error("Error, multiples players");
+				ft_error("Multiples players");
 			if (cpy[i][j] != 'N' && cpy[i][j] != 'S' && \
 			cpy[i][j] != 'E' && cpy[i][j] != 'W' && cpy[i][j] != 32 && \
 			cpy[i][j] != '0' && cpy[i][j] != '1' && cpy[i][j] != '\n')
-				ft_error("Error, invalid characters");
+				ft_error("Invalid characters");
 			j++;
 		}
 		i++;
 	}
 	if (player != 1)
-		ft_error("Error, No player");
+		ft_error("No player");
 }
 
 void	parsing_map(char **argv, t_global *global)
@@ -94,7 +94,7 @@ void	parsing_map(char **argv, t_global *global)
 	fd = open(argv[1], O_RDONLY);
 	ft_axe_y(fd, global);
 	fd = open(argv[1], O_RDONLY);
-	global->files = malloc((sizeof(char *) * (global->height + 1)) + 1);
+	global->files = malloc((sizeof(char *) * (global->height + 1)));
 	global->files[i] = get_next_line(fd);
 	while (global->files[i] != NULL)
 	{
@@ -104,5 +104,4 @@ void	parsing_map(char **argv, t_global *global)
 	i++;
 	global->files[i] = NULL;
 	close(fd);
-	verif_map(global);
 }

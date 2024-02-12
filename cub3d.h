@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/11 03:45:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/12 17:58:26 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_global
 	char			**files;
 	int				player;
 	int				height;
+	void			*mlx;
 }	t_global;
 
 //parse
@@ -50,5 +51,9 @@ void	ft_error(char *str);
 char	*ft_strcpy(char *dest, char *src);
 int		ft_longest(t_global *global);
 void	ft_save_map(t_global *global, int start);
+void	ft_print_map(char **str);
+
+//Minimap
+void    ft_minimap(t_global *global);
 
 #endif

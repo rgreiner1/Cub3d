@@ -1,28 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/12 19:10:26 by rgreiner         ###   ########.fr       */
+/*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
+/*   Updated: 2024/02/12 18:49:47 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include"cub3d.h"
 
-int	main(int argc, char **argv)
+void    ft_minimap(t_global *global)
 {
-	t_global	global;
-	int			start;
-
-	(void)argc;
-	start = 0;
-	parsing_map(argv, &global);
-	ft_save_map(&global, start);
-	verif_map(&global);
-	global.mlx = mlx_init();
-	//ft_print_map(global.map);
-	//ft_minimap(&global);
+    mlx_new_window(global->mlx, 1920, 1080, "cub3d");
+    
 }

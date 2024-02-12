@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/11 00:42:34 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:17:29 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,21 @@
 
 void    ft_error(char *str)
 {
-	ft_putendl_fd("error", 1);
+	ft_putendl_fd("Error", 1);
     ft_putendl_fd(str, 1);
     exit(1);
+}
+
+void	ft_print_map(char **str)
+{
+	int	i;
+
+	i = 0;
+	while(str[i])
+	{
+		printf("map = %s", str[i]);
+		i++;
+	}
 }
 
 char	*ft_strcpy(char *dest, char *src)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/11 03:56:47 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/12 15:47:46 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,9 +48,11 @@ int	ft_save_data(t_global *global)
 
 	i = 0;
 	data = 0;
+	//ft_print_map(global->files);
 	while (global->files[i] != NULL)
 	{
 		j = 0;
+		//printf("files = %s\n", global->files[i]);
 		while (global->files[i][j] == 32)
 			j++;
 		if (ft_strncmp(global->files[i], "NO", j + 2) == 0 && \
@@ -85,6 +87,7 @@ int	ft_save_data(t_global *global)
 		{
 			if (data < i)
 				data = i;
+			//printf("gb = %s\n", global->files[i]);
 			global->data.color_f = ft_copy_int(global->files[i], j);
 		}
 		else if (global->files[i][j] == 'C')
@@ -95,12 +98,13 @@ int	ft_save_data(t_global *global)
 		}
 		else if (ft_strchr(global->files[i], '1') != 0)
 		{
+			//printf("gb = %s\n", global->files[i]);
 			if (global->files[i + 1][0] == '\n')
 				ft_error("map is incorrect");
 			break ;
 		}
 		else if (global->files[i][0] != '\n')
-			ft_check_space(global, i);
+				ft_check_space(global, i);
 		i++;
 	}
 	ft_error_files(global, i, data);
@@ -146,7 +150,7 @@ void	ft_save_map(t_global *global, int start)
 	while (global->files[i] != NULL)
 	{
 		if (global->files[i][0] == '\n')
-			break ;
+			ft_error("map not valid");
 		i++;
 	}
 	len = i - start;
