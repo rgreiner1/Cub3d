@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/12 17:58:26 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/13 15:27:04 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,27 @@ typedef struct s_data
 	int		*color_f;
 }	t_data;
 
+typedef struct s_img
+{
+	void	*mlx;
+	void	*img;
+	void	*win;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}	t_img;
+
+
 typedef struct s_global
 {
 	struct s_data	data;
+	struct s_img	img;
 	char			**map;
 	char			**files;
-	int				player;
+	int				pos_player_y;
+	int				pos_player_x;
 	int				height;
-	void			*mlx;
 }	t_global;
 
 //parse
@@ -55,5 +68,12 @@ void	ft_print_map(char **str);
 
 //Minimap
 void    ft_minimap(t_global *global);
+void    init_map(t_global *global, int i, int j);
+
+//Deplacement
+int    ft_destroy(t_global *global);
+int    ft_check_key(int keycode, t_global *global);
+void	create_object(t_global *global, int color);
+
 
 #endif

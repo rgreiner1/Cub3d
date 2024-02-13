@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/12 19:10:26 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/13 14:53:19 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,5 @@ int	main(int argc, char **argv)
 	parsing_map(argv, &global);
 	ft_save_map(&global, start);
 	verif_map(&global);
-	global.mlx = mlx_init();
-	//ft_print_map(global.map);
-	//ft_minimap(&global);
+	ft_minimap(&global);
 }

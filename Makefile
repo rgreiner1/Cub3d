@@ -6,7 +6,7 @@
 #    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/12 18:47:27 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/02/13 10:11:22 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS    =	cub3d.c \
 			verif_files.c \
 			verif_files2.c \
 			mini_map.c \
+			key_hooks.c \
 	
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f
