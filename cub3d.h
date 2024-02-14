@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/13 15:27:04 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:19:31 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <fcntl.h>
 # include "utils/libft/libft.h"
 # include "mlx_linux/mlx.h"
+# include "math.h"
 
 typedef struct s_data
 {
@@ -46,8 +47,8 @@ typedef struct s_global
 	struct s_img	img;
 	char			**map;
 	char			**files;
-	int				pos_player_y;
-	int				pos_player_x;
+	double			pos_player_y;
+	double			pos_player_x;
 	int				height;
 }	t_global;
 
@@ -71,9 +72,9 @@ void    ft_minimap(t_global *global);
 void    init_map(t_global *global, int i, int j);
 
 //Deplacement
-int    ft_destroy(t_global *global);
-int    ft_check_key(int keycode, t_global *global);
+int		ft_destroy(t_global *global);
+int		ft_check_key(int keycode, t_global *global);
 void	create_object(t_global *global, int color);
-
+void    ft_create_ray(t_global *global, int color);
 
 #endif

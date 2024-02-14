@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/13 16:29:28 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:10:00 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 
 void    ft_move(t_global *global, int move)
 {
-    if (move == 1)
-        global->pos_player_x -= 1;
-    if (move == 2)
-        global->pos_player_x += 1;
-    if (move == 3)
-        global->pos_player_y -= 1;
-    if (move == 4)
-        global->pos_player_y += 1;
-    printf("player pos x = %d\n", global->pos_player_x);
-    printf("player pos y = %d\n", global->pos_player_y);
-    create_object(global, 0xedeb6d);
+    if (move == 1 && global->map[(int)floor(global->pos_player_x - 0.1)][(int)floor(global->pos_player_y)] != '1')
+        global->pos_player_x -= 0.1;
+    if (move == 2 && global->map[(int)floor(global->pos_player_x + 0.5)][(int)floor(global->pos_player_y)] != '1')
+        global->pos_player_x += 0.1;
+    if (move == 3 && global->map[(int)floor(global->pos_player_x)][(int)floor(global->pos_player_y - 0.1)] != '1')
+        global->pos_player_y -= 0.1;
+    if (move == 4 && global->map[(int)floor(global->pos_player_x)][(int)floor(global->pos_player_y + 0.5)] != '1')
+        global->pos_player_y += 0.1;
+//    printf("player pos x = %f\n", global->pos_player_x);
+//    printf("player pos y = %f\n", global->pos_player_y);
+    mlx_destroy_image(global->img.mlx, global->img.img);
+    global->img.img = mlx_new_image(global->img.mlx, 640, 480);
     init_map(global, 0, 0);
+    mlx_put_image_to_window(global->img.mlx, global->img.win, global->img.img, 0, 0);
 }
 
 int    ft_destroy(t_global *global)
@@ -41,12 +43,12 @@ int    ft_check_key(int keycode, t_global *global)
 		ft_destroy(global);
     if (keycode == 65362)
         {
-        ft_move(global, 2);
+        ft_move(global, 1);
         printf("Deplacement devant\n");
         }
     if (keycode == 65364)
         {
-        ft_move(global, 1);
+        ft_move(global, 2);
         printf("Deplacement arriere\n");
         }
     if (keycode == 65361)

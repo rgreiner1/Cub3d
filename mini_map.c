@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/13 18:30:17 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/14 11:13:00 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,16 +46,16 @@ void	create_wall_floor(t_global *global, int i, int j, int color)
 
 void	create_object(t_global *global, int color)
 {
-	int	count;
-	int	draw;
+	double	count;
+	double	draw;
 	int	l;
 	int	z;
 
-	count = global->pos_player_x;
+	count = global->pos_player_x * 12;
 	l = 0;
 	while(l <= 4)
 	{
-		draw = global->pos_player_y;
+		draw = global->pos_player_y * 12;
 		z = 0;
 		while (z <= 4)
 		{
@@ -74,20 +74,16 @@ void    init_map(t_global *global, int i, int j)
     {
         j = 0;
         while(global->map[i][j])
-            {
-				if (global->map[i][j] == '1')
-					create_wall_floor(global, i, j, 0x00FF0000);
-				if (global->map[i][j] == '0')
+            {	
+				if (global->map[i][j] != 32 && global->map[i][j] != '\n')
 					create_wall_floor(global, i, j, 0xffffff);
-				if (global->map[i][j] == 'N' || global->map[i][j] == 'W' || global->map[i][j] == 'E' || global->map[i][j] == 'S')
-					{
-						create_wall_floor(global, i, j, 0xffffff);
-						create_object(global, 0xedeb6d);
-					}
+				if (global->map[i][j] == '1')
+					create_wall_floor(global, i, j, 0x3c00ff);
 				j++;
             }
         i++;
-    }
+    }	
+	create_object(global, 0x05f515);
 }
 
 void	init_player_pos(t_global *global)
@@ -104,8 +100,8 @@ void	init_player_pos(t_global *global)
             {
 				if (global->map[i][j] == 'N' || global->map[i][j] == 'W' || global->map[i][j] == 'E' || global->map[i][j] == 'S')
 					{
-						global->pos_player_x = i * 12;
-						global->pos_player_y = j * 12;
+						global->pos_player_x = i;
+						global->pos_player_y = j;
 					}
 				j++;
             }
