@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/14 11:13:00 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:53:56 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	create_wall_floor(t_global *global, int i, int j, int color)
 	int	l;
 	int	z;
 
-	count = 12 * i;
+	count = 8 * i;
 	l = 0;
-	while(l <= 12)
+	while(l <= 8)
 	{
-		draw = 12 * j;
+		draw = 8 * j;
 		z = 0;
-		while (z <= 12)
+		while (z <= 8)
 		{
 			my_mlx_pixel_put(global, draw, count, color);
 			draw++;
@@ -51,11 +51,11 @@ void	create_object(t_global *global, int color)
 	int	l;
 	int	z;
 
-	count = global->pos_player_x * 12;
+	count = global->pos_player_x * 8;
 	l = 0;
 	while(l <= 4)
 	{
-		draw = global->pos_player_y * 12;
+		draw = global->pos_player_y * 8;
 		z = 0;
 		while (z <= 4)
 		{
@@ -113,7 +113,7 @@ void    ft_minimap(t_global *global)
 {   
 	global->img.mlx = mlx_init();
 	global->img.win = mlx_new_window(global->img.mlx, 640, 480, "cub3d");
-	global->img.img = mlx_new_image(global->img.mlx, 640, 480);
+	global->img.img = mlx_new_image(global->img.mlx, global->data.axes_x * 64, global->data.axes_y * 64);
     global->img.addr = mlx_get_data_addr(global->img.img, &global->img.bits_per_pixel, &global->img.line_length, &global->img.endian);
 	printf("bits per pixels = %d\n", global->img.bits_per_pixel);
 	printf("line_length = %d\n", global->img.line_length);

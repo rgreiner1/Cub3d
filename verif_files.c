@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/13 14:50:29 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:04:49 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,9 @@ int	ft_save_data(t_global *global)
 
 	i = 0;
 	data = 0;
-	//ft_print_map(global->files);
 	while (global->files[i] != NULL)
 	{
 		j = 0;
-		//printf("files = %s\n", global->files[i]);
 		while (global->files[i][j] == 32)
 			j++;
 		if (ft_strncmp(global->files[i], "NO", j + 2) == 0 && \
@@ -87,7 +85,6 @@ int	ft_save_data(t_global *global)
 		{
 			if (data < i)
 				data = i;
-			//printf("gb = %s\n", global->files[i]);
 			global->data.color_f = ft_copy_int(global->files[i], j);
 		}
 		else if (global->files[i][j] == 'C')
@@ -98,7 +95,6 @@ int	ft_save_data(t_global *global)
 		}
 		else if (ft_strchr(global->files[i], '1') != 0)
 		{
-			//printf("gb = %s\n", global->files[i]);
 			if (global->files[i + 1][0] == '\n')
 				ft_error("map is incorrect");
 			break ;
@@ -148,11 +144,7 @@ void	ft_save_map(t_global *global, int start)
 	len = 0;
 	ft_check_space_map(global, start);
 	while (global->files[i] != NULL)
-	{
-		if (global->files[i][0] == '\n')
-			ft_error("map not valid");
 		i++;
-	}
 	len = i - start;
 	global->map = malloc(sizeof(char *) * (len + 1));
 	i = 0;
@@ -162,5 +154,8 @@ void	ft_save_map(t_global *global, int start)
 		i++;
 		start++;
 	}
+	printf("%d\n", i);
+	global->data.axes_x = i;
+	global->data.axes_y = ft_longest(global) - 1;
 	global->map[i] = NULL;
 }

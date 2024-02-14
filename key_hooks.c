@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/14 11:10:00 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/14 15:56:12 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void    ft_move(t_global *global, int move)
 //    printf("player pos x = %f\n", global->pos_player_x);
 //    printf("player pos y = %f\n", global->pos_player_y);
     mlx_destroy_image(global->img.mlx, global->img.img);
-    global->img.img = mlx_new_image(global->img.mlx, 640, 480);
+	global->img.img = mlx_new_image(global->img.mlx, global->data.axes_x * 64, global->data.axes_y * 64);
     init_map(global, 0, 0);
     mlx_put_image_to_window(global->img.mlx, global->img.win, global->img.img, 0, 0);
 }
