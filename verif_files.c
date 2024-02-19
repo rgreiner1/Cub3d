@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/14 16:04:49 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/19 17:43:09 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_check_space(t_global *global, int i)
 	while (global->files[i][j] != '\0' && global->files[i][j] != '\n')
 	{
 		if (global->files[i][j] != 32)
-			ft_error("string is not valid");
+			//ft_error("string is not valid");
 		j++;
 	}
 }
@@ -99,8 +99,8 @@ int	ft_save_data(t_global *global)
 				ft_error("map is incorrect");
 			break ;
 		}
-		else if (global->files[i][0] != '\n')
-				ft_check_space(global, i);
+		//else if (global->files[i][0] != '\n')
+		//		ft_check_space(global, i);
 		i++;
 	}
 	ft_error_files(global, i, data);

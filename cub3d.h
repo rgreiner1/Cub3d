@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/14 14:44:15 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:49:17 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <fcntl.h>
 # include "utils/libft/libft.h"
 # include "mlx_linux/mlx.h"
-# include "math.h"
+# include <math.h>
 
 typedef struct s_data
 {
@@ -42,11 +42,32 @@ typedef struct s_img
 	int		endian;
 }	t_img;
 
+typedef struct s_ray
+{
+	int		ang_x;
+	int		ang_y;
+	double	side_x;
+	double	side_y;
+	double	side_x_dist;
+	double	side_y_dist;
+	double	side_y_x;
+	double	side_y_y;
+	double	side_x_x;
+	double	side_x_y;
+	double	dist_x;
+	double	pos_x_y;	
+	double	pos_x_x;
+	double	dist_y;
+	double	pos_y_x;
+	double	pos_y_y;
+}	t_ray;
 
 typedef struct s_global
 {
 	struct s_data	data;
 	struct s_img	img;
+	struct s_ray	ray;
+	int				angle_deg;
 	char			**map;
 	char			**files;
 	double			pos_player_y;
@@ -78,5 +99,10 @@ int		ft_destroy(t_global *global);
 int		ft_check_key(int keycode, t_global *global);
 void	create_object(t_global *global, int color);
 void    ft_create_ray(t_global *global, int color);
+
+void    check_angle_deg(t_global *data, char c);
+void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
+void    ft_search_side_x(t_global *data);
+void    ft_search_side_y(t_global *data);
 
 #endif

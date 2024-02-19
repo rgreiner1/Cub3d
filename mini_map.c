@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/14 15:53:56 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/19 18:41:38 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,6 +100,7 @@ void	init_player_pos(t_global *global)
             {
 				if (global->map[i][j] == 'N' || global->map[i][j] == 'W' || global->map[i][j] == 'E' || global->map[i][j] == 'S')
 					{
+						check_angle_deg(global, global->map[i][j]);
 						global->pos_player_x = i;
 						global->pos_player_y = j;
 					}
@@ -120,6 +121,8 @@ void    ft_minimap(t_global *global)
 	printf("endian = %d\n", global->img.endian);
 	init_player_pos(global);
     init_map(global, 0, 0);
+	ft_search_side_x(global);
+	ft_search_side_y(global);
 	mlx_put_image_to_window(global->img.mlx, global->img.win, global->img.img, 0, 0);
     mlx_key_hook(global->img.win, ft_check_key, global);
 	mlx_hook(global->img.win, 17, 0, ft_destroy, global);
