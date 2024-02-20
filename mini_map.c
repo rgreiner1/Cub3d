@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/19 18:41:38 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:36:36 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,13 @@ void	create_wall_floor(t_global *global, int i, int j, int color)
 	int	l;
 	int	z;
 
-	count = 8 * i;
+	count = SIZE_MAP * i;
 	l = 0;
-	while(l <= 8)
+	while(l <= SIZE_MAP)
 	{
-		draw = 8 * j;
+		draw = SIZE_MAP * j;
 		z = 0;
-		while (z <= 8)
+		while (z <= SIZE_MAP)
 		{
 			my_mlx_pixel_put(global, draw, count, color);
 			draw++;
@@ -51,11 +51,11 @@ void	create_object(t_global *global, int color)
 	int	l;
 	int	z;
 
-	count = global->pos_player_x * 8;
+	count = global->pos_player_x * SIZE_MAP - 2;
 	l = 0;
 	while(l <= 4)
 	{
-		draw = global->pos_player_y * 8;
+		draw = global->pos_player_y * SIZE_MAP - 2;
 		z = 0;
 		while (z <= 4)
 		{
@@ -101,8 +101,8 @@ void	init_player_pos(t_global *global)
 				if (global->map[i][j] == 'N' || global->map[i][j] == 'W' || global->map[i][j] == 'E' || global->map[i][j] == 'S')
 					{
 						check_angle_deg(global, global->map[i][j]);
-						global->pos_player_x = i;
-						global->pos_player_y = j;
+						global->pos_player_x = i + 0.5;
+						global->pos_player_y = j + 0.5;
 					}
 				j++;
             }
@@ -116,9 +116,9 @@ void    ft_minimap(t_global *global)
 	global->img.win = mlx_new_window(global->img.mlx, 640, 480, "cub3d");
 	global->img.img = mlx_new_image(global->img.mlx, global->data.axes_x * 64, global->data.axes_y * 64);
     global->img.addr = mlx_get_data_addr(global->img.img, &global->img.bits_per_pixel, &global->img.line_length, &global->img.endian);
-	printf("bits per pixels = %d\n", global->img.bits_per_pixel);
-	printf("line_length = %d\n", global->img.line_length);
-	printf("endian = %d\n", global->img.endian);
+	//printf("bits per pixels = %d\n", global->img.bits_per_pixel);
+	//printf("line_length = %d\n", global->img.line_length);
+	//printf("endian = %d\n", global->img.endian);
 	init_player_pos(global);
     init_map(global, 0, 0);
 	ft_search_side_x(global);

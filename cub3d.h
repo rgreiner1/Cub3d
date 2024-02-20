@@ -3,17 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/19 19:49:17 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:30:00 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# define SIZE_MAP 64
 
 # include <stdlib.h>
+# include <unistd.h>
 # include <fcntl.h>
 # include "utils/libft/libft.h"
 # include "mlx_linux/mlx.h"
@@ -44,8 +46,8 @@ typedef struct s_img
 
 typedef struct s_ray
 {
-	int		ang_x;
-	int		ang_y;
+	double	ang_x;
+	double	ang_y;
 	double	side_x;
 	double	side_y;
 	double	side_x_dist;
@@ -67,7 +69,7 @@ typedef struct s_global
 	struct s_data	data;
 	struct s_img	img;
 	struct s_ray	ray;
-	int				angle_deg;
+	double			angle_deg;
 	char			**map;
 	char			**files;
 	double			pos_player_y;
