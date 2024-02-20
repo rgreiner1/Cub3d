@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   parse_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:24 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/13 14:46:51 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/20 23:41:33 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-
-int		ft_map_len(char **map)
+int	ft_map_len(char **map)
 {
-	int len;
+	int	len;
 
 	len = 0;
 	while (map[len])
 		len++;
 	return (len);
 }
+
 char	**init_cpy(t_global *global)
 {
 	char	**cp;

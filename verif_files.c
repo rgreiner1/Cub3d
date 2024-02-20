@@ -3,42 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/19 17:43:09 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/21 00:19:21 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	ft_error_files(t_global *global, int map, int data)
-{
-	if (map == global->height)
-		ft_error("there is no map");
-	if (data == 0 || data >= map)
-		ft_error("the map is not in the right place");
-	if (!global->data.no || !global->data.so || \
-		!global->data.we || !global->data.ea)
-	{
-		ft_error("not enough arguments about direction");
-	}
-	if (!global->data.color_f || !global->data.color_c)
-		ft_error("not enough arguments about colors");
-}
-
-void	ft_check_space(t_global *global, int i)
-{
-	int	j;
-
-	j = 0;
-	while (global->files[i][j] != '\0' && global->files[i][j] != '\n')
-	{
-		if (global->files[i][j] != 32)
-			//ft_error("string is not valid");
-		j++;
-	}
-}
 
 int	ft_save_data(t_global *global)
 {
@@ -99,8 +71,6 @@ int	ft_save_data(t_global *global)
 				ft_error("map is incorrect");
 			break ;
 		}
-		//else if (global->files[i][0] != '\n')
-		//		ft_check_space(global, i);
 		i++;
 	}
 	ft_error_files(global, i, data);
