@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 00:46:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/21 15:45:31 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define SIZE_MAP 64
+# define SIZE_MAP 16
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -106,6 +106,9 @@ void	check_angle_deg(t_global *data, char c);
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
 void	ft_search_side_x(t_global *data);
 void	ft_search_side_y(t_global *data);
+void    ft_delta_x(t_global *data);
+void    ft_delta_y(t_global *data);
+
 void	ft_error_files(t_global *global, int map, int data);
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
 
