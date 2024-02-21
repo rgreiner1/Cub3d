@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 18:08:44 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:51:48 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,9 +104,6 @@ void	init_player_pos(t_global *global)
 
 void	ft_minimap(t_global *global)
 {
-	//int i;
-
-//	i = 0;
 	global->img.mlx = mlx_init();
 	global->img.win = mlx_new_window(global->img.mlx, 1920, 1080, "cub3d");
 	global->img.img = mlx_new_image(global->img.mlx, (global->data.axes_x + 1) * 64, \
@@ -121,36 +118,52 @@ void	ft_minimap(t_global *global)
 	{
 		if (global->ray.dist_x < global->ray.dist_y)
 		{
-			if (global->angle_deg >= 90 && global->angle_deg < 270)
+			if (global->angle_deg >= 0 && global->angle_deg < 180) 
 			{
 				if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x] == '1')
+				{
+					my_mlx_pixel_put(global, global->ray.pos_x_x * SIZE_MAP, \
+						global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
 					break;
+				}
 				ft_delta_x(global);
 			}
 			else
 			{
 				if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x - 1] == '1')
+				{
+					my_mlx_pixel_put(global, global->ray.pos_x_x * SIZE_MAP, \
+						global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
 					break;
+				}
 				ft_delta_x(global);
 			}
 		}
 		else
 		{
-			if (global->angle_deg >= 0 && global->angle_deg < 180) 
+			if (global->angle_deg >= 90 && global->angle_deg < 270)
 			{
-				if (global->map[(int)global->ray.pos_y_y - 1][(int)global->ray.pos_y_x] == '1')
+				if (global->map[(int)global->ray.pos_y_y][(int)global->ray.pos_y_x] == '1')
+				{
+					my_mlx_pixel_put(global, global->ray.pos_y_x * SIZE_MAP, \
+						global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
 					break;
+				}
 				ft_delta_y(global);	
 			}
 			else
 			{
-				ft_putendl_fd("cc", 1);
-				if (global->map[(int)global->ray.pos_y_y][(int)global->ray.pos_y_x] == '1')
-					break;
+				if (global->map[(int)global->ray.pos_y_y - 1][(int)global->ray.pos_y_x] == '1')
+					{
+						my_mlx_pixel_put(global, global->ray.pos_y_x * SIZE_MAP, \
+							global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
+						break;
+					}
 				ft_delta_y(global);	
 			}
 		}
 	}
+	
 	mlx_put_image_to_window(global->img.mlx, global->img.win, \
 		global->img.img, 0, 0);
 	mlx_key_hook(global->img.win, ft_check_key, global);

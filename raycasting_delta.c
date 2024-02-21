@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:29:20 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 17:15:42 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:48:13 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,6 @@ void	ft_delta_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
-	my_mlx_pixel_put(data, data->ray.pos_x_x * SIZE_MAP, \
-		data->ray.pos_x_y * SIZE_MAP, 0xFF0000);
-	//printf("pos_x_y = %f\n", data->ray.pos_x_y);
-	//printf("pos_x_x = %f\n", data->ray.pos_x_x);
 }
 
 void	ft_delta_y(t_global *data)
@@ -80,8 +76,4 @@ void	ft_delta_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
-	my_mlx_pixel_put(data, data->ray.pos_y_x * SIZE_MAP, \
-		data->ray.pos_y_y * SIZE_MAP, 0xFF0000);
-//	printf("pos_y_y = %f\n", data->ray.pos_y_y);
-//	printf("pos_y_x = %f\n", data->ray.pos_y_x);
 }

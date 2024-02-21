@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 15:42:54 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/21 18:53:26 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,8 +80,6 @@ void	ft_search_side_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
-	my_mlx_pixel_put(data, data->ray.pos_x_x * SIZE_MAP, \
-		data->ray.pos_x_y * SIZE_MAP, 0xFF0000);
 }
 
 void	ft_search_side_y(t_global *data)
@@ -103,7 +101,4 @@ void	ft_search_side_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
-	my_mlx_pixel_put(data, data->ray.pos_y_x * SIZE_MAP, \
-		data->ray.pos_y_y * SIZE_MAP, 0xFF0000);
-
 }
