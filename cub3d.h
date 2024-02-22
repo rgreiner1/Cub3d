@@ -3,16 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 15:45:31 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/22 15:57:04 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define SIZE_MAP 16
+# define HEIGHT 1080
+# define WIDTH 1920
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -68,6 +70,7 @@ typedef struct s_global
 {
 	struct s_data	data;
 	struct s_img	img;
+	struct s_img	game;
 	struct s_ray	ray;
 	double			angle_deg;
 	char			**map;
@@ -111,5 +114,8 @@ void    ft_delta_y(t_global *data);
 
 void	ft_error_files(t_global *global, int map, int data);
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
+void	init_ray(t_global *data);
+void	ft_create_rays(t_global *global);
+
 
 #endif

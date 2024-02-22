@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 18:51:48 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:37:12 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,65 +105,20 @@ void	init_player_pos(t_global *global)
 void	ft_minimap(t_global *global)
 {
 	global->img.mlx = mlx_init();
-	global->img.win = mlx_new_window(global->img.mlx, 1920, 1080, "cub3d");
+	global->img.win = mlx_new_window(global->img.mlx, WIDTH, HEIGHT, "cub3d");
+	global->game.img = mlx_new_image(global->img.mlx, WIDTH, HEIGHT);
 	global->img.img = mlx_new_image(global->img.mlx, (global->data.axes_x + 1) * 64, \
 		(global->data.axes_y + 1) * 64);
 	global->img.addr = mlx_get_data_addr(global->img.img, &global->img.bits_per_pixel, \
 		&global->img.line_length, &global->img.endian);
+	global->game.addr = mlx_get_data_addr(global->game.img, &global->game.bits_per_pixel, \
+		&global->game.line_length, &global->game.endian);
 	init_player_pos(global);
 	init_map(global, 0, 0);
-	ft_search_side_x(global);
-	ft_search_side_y(global);
-	while (1)
-	{
-		if (global->ray.dist_x < global->ray.dist_y)
-		{
-			if (global->angle_deg >= 0 && global->angle_deg < 180) 
-			{
-				if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x] == '1')
-				{
-					my_mlx_pixel_put(global, global->ray.pos_x_x * SIZE_MAP, \
-						global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
-					break;
-				}
-				ft_delta_x(global);
-			}
-			else
-			{
-				if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x - 1] == '1')
-				{
-					my_mlx_pixel_put(global, global->ray.pos_x_x * SIZE_MAP, \
-						global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
-					break;
-				}
-				ft_delta_x(global);
-			}
-		}
-		else
-		{
-			if (global->angle_deg >= 90 && global->angle_deg < 270)
-			{
-				if (global->map[(int)global->ray.pos_y_y][(int)global->ray.pos_y_x] == '1')
-				{
-					my_mlx_pixel_put(global, global->ray.pos_y_x * SIZE_MAP, \
-						global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
-					break;
-				}
-				ft_delta_y(global);	
-			}
-			else
-			{
-				if (global->map[(int)global->ray.pos_y_y - 1][(int)global->ray.pos_y_x] == '1')
-					{
-						my_mlx_pixel_put(global, global->ray.pos_y_x * SIZE_MAP, \
-							global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
-						break;
-					}
-				ft_delta_y(global);	
-			}
-		}
-	}
-	
+	ft_create_rays(global);
+	my_mlx_pixel_put(global, 400, 500, 0x008000);
+	mlx_put_image_to_window(global->img.mlx, global->img.win, \
+		global->game.img, 0, 0);
 	mlx_put_image_to_window(global->img.mlx, global->img.win, \
 		global->img.img, 0, 0);
 	mlx_key_hook(global->img.win, ft_check_key, global);

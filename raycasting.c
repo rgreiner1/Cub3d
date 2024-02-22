@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 18:53:26 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/22 19:10:05 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,6 @@ void	check_angle_deg(t_global *data, char c)
 		data->angle_deg = 180;
 	else if (c == 'W')
 		data->angle_deg = 270;
-	data->ray.dist_x = 0;
-	data->ray.pos_x_x = data->pos_player_x;
-	data->ray.pos_x_y = data->pos_player_y;
-	data->ray.dist_y = 0;
-	data->ray.pos_y_x = data->pos_player_x;
-	data->ray.pos_y_y = data->pos_player_y;
 }
 
 void	ft_angle_x(t_global *data)
@@ -101,4 +95,69 @@ void	ft_search_side_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
+}
+
+void	ft_create_rays(t_global *global)
+{
+	double	i;
+
+	i = 0;
+	global->angle_deg -= 30.0;
+	while(i < WIDTH)
+	{
+		init_ray(global);
+		ft_search_side_x(global);
+		ft_search_side_y(global);
+		global->angle_deg += 60.0/WIDTH;
+		while (1)
+		{
+			if (global->ray.dist_x < global->ray.dist_y)
+			{
+				if (global->angle_deg >= 0 && global->angle_deg < 180) 
+				{
+					if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x] == '1')
+					{
+						my_mlx_pixel_put(global, global->ray.pos_x_x * SIZE_MAP, \
+							global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
+						break;
+					}
+					ft_delta_x(global);
+				}
+				else
+				{
+					if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x - 1] == '1')
+					{
+						my_mlx_pixel_put(global, global->ray.pos_x_x * SIZE_MAP, \
+							global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
+						break;
+					}
+					ft_delta_x(global);
+				}
+			}
+			else
+			{
+				if (global->angle_deg >= 90 && global->angle_deg < 270)
+				{
+					if (global->map[(int)global->ray.pos_y_y][(int)global->ray.pos_y_x] == '1')
+					{
+						my_mlx_pixel_put(global, global->ray.pos_y_x * SIZE_MAP, \
+							global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
+						break;
+					}
+					ft_delta_y(global);	
+				}
+				else
+				{
+					if (global->map[(int)global->ray.pos_y_y - 1][(int)global->ray.pos_y_x] == '1')
+					{
+						my_mlx_pixel_put(global, global->ray.pos_y_x * SIZE_MAP, \
+							global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
+						break;
+					}
+					ft_delta_y(global);
+				}
+			}
+		}
+		i++;
+	}
 }

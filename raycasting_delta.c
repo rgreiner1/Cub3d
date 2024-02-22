@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_delta.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:29:20 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/21 18:48:13 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/22 14:30:06 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,4 +76,14 @@ void	ft_delta_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
+}
+
+void	init_ray(t_global *data)
+{
+	data->ray.dist_x = 0;
+	data->ray.pos_x_x = data->pos_player_x;
+	data->ray.pos_x_y = data->pos_player_y;
+	data->ray.dist_y = 0;
+	data->ray.pos_y_x = data->pos_player_x;
+	data->ray.pos_y_y = data->pos_player_y;
 }
