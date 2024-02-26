@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/22 19:10:05 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:56:36 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,8 +100,10 @@ void	ft_search_side_y(t_global *data)
 void	ft_create_rays(t_global *global)
 {
 	double	i;
+	double tmp;
 
 	i = 0;
+	tmp = global->angle_deg;
 	global->angle_deg -= 30.0;
 	while(i < WIDTH)
 	{
@@ -160,4 +162,5 @@ void	ft_create_rays(t_global *global)
 		}
 		i++;
 	}
+	global->angle_deg = tmp;
 }
