@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/26 10:56:36 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/26 15:50:31 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,17 +105,18 @@ void	ft_create_rays(t_global *global)
 	i = 0;
 	tmp = global->angle_deg;
 	global->angle_deg -= 30.0;
+	if (global->angle_deg < 0)
+		global->angle_deg = 360 + global->angle_deg;
 	while(i < WIDTH)
 	{
 		init_ray(global);
 		ft_search_side_x(global);
 		ft_search_side_y(global);
-		global->angle_deg += 60.0/WIDTH;
 		while (1)
 		{
 			if (global->ray.dist_x < global->ray.dist_y)
 			{
-				if (global->angle_deg >= 0 && global->angle_deg < 180) 
+				if (global->angle_deg >= 0 && global->angle_deg < 180)
 				{
 					if (global->map[(int)global->ray.pos_x_y][(int)global->ray.pos_x_x] == '1')
 					{
@@ -160,6 +161,9 @@ void	ft_create_rays(t_global *global)
 				}
 			}
 		}
+		global->angle_deg += 60.0/WIDTH;
+		if (global->angle_deg == 360)
+			global->angle_deg = 0;
 		i++;
 	}
 	global->angle_deg = tmp;

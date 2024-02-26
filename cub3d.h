@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/26 10:49:10 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/26 16:27:56 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define SIZE_MAP 16
+# define SIZE_MAP 32
 # define HEIGHT 1080
 # define WIDTH 1920
 

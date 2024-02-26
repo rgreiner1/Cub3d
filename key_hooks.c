@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/26 14:41:42 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/26 17:56:45 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_move(t_global *global, int move)
 {
 	printf("%d\n", move);
 	if (move == 1 && global->map[(int)floor(global->pos_player_x)] \
-		[(int)ceil(global->pos_player_y)] != '1')
+		[(int)floor(global->pos_player_y)] != '1')
 		global->pos_player_y -= 0.1;
 	if (move == 2 && global->map[(int)floor(global->pos_player_x)] \
 		[(int)floor(global->pos_player_y)] != '1')
@@ -47,16 +47,16 @@ void	ft_check_key2(int keycode, t_global *global)
 {
 	if (keycode == 65361)
 	{
-		global->angle_deg += 1;
-		if (global->angle_deg > 359)
-			global->angle_deg = 0;
+		global->angle_deg -= 1;
+		if (global->angle_deg < 0)
+			global->angle_deg = 359;
 		printf("Deplacement camera gauche\n");
 	}
 	if (keycode == 65363)
 	{
-		global->angle_deg -= 1;
-		if (global->angle_deg < 0)
-			global->angle_deg = 359;
+		global->angle_deg += 1;
+		if (global->angle_deg > 359)
+			global->angle_deg = 0;
 		printf("Deplacement camera droite\n");
 	}
 	mlx_destroy_image(global->img.mlx, global->img.img);
