@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/22 15:57:04 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/26 10:49:10 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,6 @@ void	create_object(t_global *global, int color);
 void	ft_create_ray(t_global *global, int color);
 
 void	check_angle_deg(t_global *data, char c);
-void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
 void	ft_search_side_x(t_global *data);
 void	ft_search_side_y(t_global *data);
 void    ft_delta_x(t_global *data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/21 00:19:21 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/26 10:57:13 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,7 +124,6 @@ void	ft_save_map(t_global *global, int start)
 		i++;
 		start++;
 	}
-	printf("%d\n", i);
 	global->data.axes_x = i;
 	global->data.axes_y = ft_longest(global) - 1;
 	global->map[i] = NULL;
