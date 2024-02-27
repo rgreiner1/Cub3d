@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:04:31 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/27 20:16:20 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:53:34 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	ft_create_f_s(t_global *global)
 	{
 		while (x != WIDTH)
 			{
-				my_mlx_pixel_put2(global, x, y, 0x0092FF);
+				my_mlx_pixel_put2(global, x, y, global->color_hex_f);
 				x++;
 			}
 	x = 0;
@@ -74,7 +74,7 @@ void	ft_create_f_s(t_global *global)
 	{
 		while (x != WIDTH)
 			{
-				my_mlx_pixel_put2(global, x, y, 0x5c2825);
+				my_mlx_pixel_put2(global, x, y, global->color_hex_c);
 				x++;
 			}
 	x = 0;

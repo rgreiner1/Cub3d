@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils2.c                                           :+:      :+:    :+:   */
+/*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/27 20:37:28 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:53:11 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,14 @@ void	ft_color(t_global *global)
 		i++;
 		str = ft_strjoin(str, ft_convert_color(global->data.color_c[i]));
 	}
-	printf("%s\n", str);
 	global->color_hex_c = ft_hti(str);
-	printf("color_c = %ld\n", global->color_hex_c);
+	free(str);
+	i = 0;
+	str = ft_strjoin("0x", ft_convert_color(global->data.color_c[i]));
+	while (global->data.color_f[i])
+	{
+		i++;
+		str = ft_strjoin(str, ft_convert_color(global->data.color_f[i]));
+	}
+	global->color_hex_f = ft_hti(str);
 }

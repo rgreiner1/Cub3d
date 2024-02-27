@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/27 20:45:09 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:47:44 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,8 +77,8 @@ typedef struct s_global
 	char			**files;
 	double			pos_player_y;
 	double			pos_player_x;
-	long int		color_hex_c;
-	long int		color_hex_f;
+	int				color_hex_c;
+	int				color_hex_f;
 	int				height;
 }	t_global;
 
