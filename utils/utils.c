@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/26 15:23:45 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:08:13 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,5 +67,14 @@ void	my_mlx_pixel_put(t_global *global, int x, int y, int color)
 
 	dst = global->img.addr + \
 		(y * global->img.line_length + x * (global->img.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+void	my_mlx_pixel_put2(t_global *global, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = global->game.addr + \
+		(y * global->game.line_length + x * (global->game.bits_per_pixel / 8));
 	*(unsigned int *)dst = color;
 }
