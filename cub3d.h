@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/27 16:46:50 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:08:27 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,10 @@ void    ft_delta_y(t_global *data);
 
 void	ft_error_files(t_global *global, int map, int data);
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
+void	my_mlx_pixel_put2(t_global *global, int x, int y, int color);
 void	init_ray(t_global *data);
 void	ft_create_rays(t_global *global);
 void	ft_next_move(t_global *global, int move, double step_x, double step_y);
+void	ft_create_f_s(t_global *global);
 
 #endif

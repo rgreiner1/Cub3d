@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 18:04:31 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/27 16:46:05 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/02/27 20:16:20 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,14 @@ void	ft_verif_wall(t_global *global, double step_x, double step_y)
 	if (global->map[(int)floor(global->pos_player_y + step_y)] \
 	[(int)floor(global->pos_player_x + step_x)] != '1')
 	{
-		global->pos_player_x += step_x;
-		global->pos_player_y += step_y;
+		if (global->map[(int)floor(global->pos_player_y + step_y)] \
+		[(int)floor(global->pos_player_x )] != '1')
+		if (global->map[(int)floor(global->pos_player_y)] \
+		[(int)floor(global->pos_player_x + step_x )] != '1')
+		{
+			global->pos_player_x += step_x;
+			global->pos_player_y += step_y;
+		}
 	}
 }
 
@@ -45,4 +51,34 @@ void	ft_next_move(t_global *global, int move, double step_x, double step_y)
 		step_y = 0.1 * sin(global->angle_deg * M_PI / 180);
 	}
 	ft_verif_wall(global, step_x, step_y);
+}
+
+void	ft_create_f_s(t_global *global)
+{
+	int	x;
+	int	y;
+
+	x = 0;
+	y = 0;
+	while(y < HEIGHT / 2)
+	{
+		while (x != WIDTH)
+			{
+				my_mlx_pixel_put2(global, x, y, 0x0092FF);
+				x++;
+			}
+	x = 0;
+	y++;
+	}
+	while(y <= HEIGHT)
+	{
+		while (x != WIDTH)
+			{
+				my_mlx_pixel_put2(global, x, y, 0x5c2825);
+				x++;
+			}
+	x = 0;
+	y++;
+	}
+
 }
