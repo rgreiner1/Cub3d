@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
+#    By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/27 14:10:28 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/02/27 20:42:20 by ogregoir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ SRCS    =	cub3d.c \
 			parse.c \
 			parse_walls.c \
 			utils/utils.c \
+			utils/color.c \
 			verif_files.c \
 			verif_files2.c \
 			mini_map.c \
