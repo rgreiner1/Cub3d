@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/26 17:56:45 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:46:28 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,23 +14,11 @@
 
 void	ft_move(t_global *global, int move)
 {
-	printf("%d\n", move);
-	if (move == 1 && global->map[(int)floor(global->pos_player_x)] \
-		[(int)floor(global->pos_player_y)] != '1')
-		global->pos_player_y -= 0.1;
-	if (move == 2 && global->map[(int)floor(global->pos_player_x)] \
-		[(int)floor(global->pos_player_y)] != '1')
-		global->pos_player_y += 0.1;
-	if (move == 3 && global->map[(int)floor(global->pos_player_x - 0.1)] \
-		[(int)floor(global->pos_player_y)] != '1')
-		global->pos_player_x -= 0.1;
-	if (move == 4 && global->map[(int)floor(global->pos_player_x + 0.1)] \
-		[(int)floor(global->pos_player_y)] != '1')
-		global->pos_player_x += 0.1;
 	mlx_destroy_image(global->img.mlx, global->img.img);
 	global->img.img = mlx_new_image(global->img.mlx, (global->data.axes_x + 1) * 64, \
 		(global->data.axes_y + 1) * 64);
 	init_map(global, 0, 0);
+	ft_next_move(global, move, 0.0, 0.0);
 	ft_create_rays(global);
 	mlx_put_image_to_window(global->img.mlx, \
 		global->img.win, global->img.img, 0, 0);
@@ -47,17 +35,15 @@ void	ft_check_key2(int keycode, t_global *global)
 {
 	if (keycode == 65361)
 	{
-		global->angle_deg -= 1;
+		global->angle_deg -= 10;
 		if (global->angle_deg < 0)
 			global->angle_deg = 359;
-		printf("Deplacement camera gauche\n");
 	}
 	if (keycode == 65363)
 	{
-		global->angle_deg += 1;
+		global->angle_deg += 10;
 		if (global->angle_deg > 359)
 			global->angle_deg = 0;
-		printf("Deplacement camera droite\n");
 	}
 	mlx_destroy_image(global->img.mlx, global->img.img);
 	global->img.img = mlx_new_image(global->img.mlx, (global->data.axes_x + 1) * 64, \

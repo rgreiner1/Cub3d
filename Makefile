@@ -6,7 +6,7 @@
 #    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/21 10:30:58 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/02/27 14:10:28 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,6 +20,7 @@ SRCS    =	cub3d.c \
 			key_hooks.c \
 			raycasting.c \
 			raycasting_delta.c \
+			move.c \
 			
 	
 OBJS    =   ${SRCS:.c=.o}
