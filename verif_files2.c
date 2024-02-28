@@ -34,30 +34,46 @@ char	*ft_copy_string(char *str, int j)
 	return (s);
 }
 
+int	check_space(char *str)
+{
+	int	i;
+	int	len;
+
+	i = 0;
+	len = 0;
+	while (str[i] == 32)
+		i++;
+	while (ft_isdigit(str[i]) == 1)
+	{
+		len++;
+		i++;
+	}
+	while (str[i])
+	{
+		if(ft_isdigit(str[i]) == 1)
+			ft_error("number format is incorrect");
+		i++;
+	}
+	return (len);
+}
+
 char	*ft_sup_space(char *str)
 {
 	int		i;
+	int		len;
 	char	*s;
 
 	i = 0;
+	len = 0;
 	s = NULL;
-	while (str[i] == 32)
-		i++;
 	while(str[i])
 	{
-		if (ft_isdigit(str[i]) == 0)
-			break;
+		if ((ft_isdigit(str[i]) == 0) && str[i] != 32 && str[i] != '\n')
+			ft_error("character is not numeric");
 		i++;
 	}
-	if (str[i] != '\0' && str[i] != ' ')
-	{
-		while(str[i] == ' ')
-			i++;
-	}
-	printf("str[i] = %d\n", str[i]);
-	if (str[i] != '\0' && str[i] != '\n')
-		ft_error("character is not numeric");
-	s = ft_substr(str, 0, i);
+	len = check_space(str);
+	s = ft_substr(str, 0, len);
 	return (s);
 }
 
