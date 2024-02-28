@@ -3,16 +3,17 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+         #
+#    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/02/27 20:42:20 by ogregoir         ###   ########.fr        #
+#    Updated: 2024/02/28 18:42:06 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS    =	cub3d.c \
 			parse.c \
 			parse_walls.c \
+			draw_wall.c \
 			utils/utils.c \
 			utils/color.c \
 			verif_files.c \

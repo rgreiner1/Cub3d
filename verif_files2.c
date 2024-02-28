@@ -96,7 +96,7 @@ int	*ft_copy_int(char *str, int j)
 	{
 		temp = ft_sup_space(s[i]);
 		color[i] = ft_atoi(temp);
-		if (color[i] < 0 && color[i] > 255)
+		if (color[i] < 0 || color[i] > 255)
 			ft_error("the color is not between 0 and 255");
 		i++;
 	}

@@ -3,18 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/27 20:47:44 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:57:05 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
-# define SIZE_MAP 32
+# define SIZE_MAP 8
 # define HEIGHT 1080
 # define WIDTH 1920
+# define FOV 60.0
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -64,6 +65,8 @@ typedef struct s_ray
 	double	dist_y;
 	double	pos_y_x;
 	double	pos_y_y;
+	double	opp_total_y;
+	double	opp_total_x;
 }	t_ray;
 
 typedef struct s_global
@@ -121,5 +124,6 @@ void	ft_create_rays(t_global *global);
 void	ft_next_move(t_global *global, int move, double step_x, double step_y);
 void	ft_create_f_s(t_global *global);
 void	ft_color(t_global *global);
+void    ft_draw_wall(t_global *global, int i);
 
 #endif

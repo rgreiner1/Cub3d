@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/26 15:50:31 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/28 19:08:02 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ void	ft_search_side_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
+	data->ray.opp_total_x += data->ray.side_x_x;
 }
 
 void	ft_search_side_y(t_global *data)
@@ -95,6 +96,7 @@ void	ft_search_side_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
+	data->ray.opp_total_y += data->ray.side_y_y;
 }
 
 void	ft_create_rays(t_global *global)
@@ -107,6 +109,7 @@ void	ft_create_rays(t_global *global)
 	global->angle_deg -= 30.0;
 	if (global->angle_deg < 0)
 		global->angle_deg = 360 + global->angle_deg;
+	ft_create_f_s(global);
 	while(i < WIDTH)
 	{
 		init_ray(global);
@@ -161,7 +164,8 @@ void	ft_create_rays(t_global *global)
 				}
 			}
 		}
-		global->angle_deg += 60.0/WIDTH;
+		ft_draw_wall(global, i);
+		global->angle_deg += FOV/WIDTH;
 		if (global->angle_deg == 360)
 			global->angle_deg = 0;
 		i++;

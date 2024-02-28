@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/27 20:45:23 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:06:48 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,8 +107,8 @@ void	ft_minimap(t_global *global)
 	global->img.mlx = mlx_init();
 	global->img.win = mlx_new_window(global->img.mlx, WIDTH, HEIGHT, "cub3d");
 	global->game.img = mlx_new_image(global->img.mlx, WIDTH, HEIGHT);
-	global->img.img = mlx_new_image(global->img.mlx, (global->data.axes_x + 1) * 64, \
-		(global->data.axes_y + 1) * 64);
+	global->img.img = mlx_new_image(global->img.mlx, (global->data.axes_x + 1) * SIZE_MAP, \
+		(global->data.axes_y + 1) * SIZE_MAP);
 	global->img.addr = mlx_get_data_addr(global->img.img, &global->img.bits_per_pixel, \
 		&global->img.line_length, &global->img.endian);
 	global->game.addr = mlx_get_data_addr(global->game.img, &global->game.bits_per_pixel, \
@@ -116,7 +116,6 @@ void	ft_minimap(t_global *global)
 	init_player_pos(global);
 	init_map(global, 0, 0);
 	ft_create_rays(global);
-	ft_create_f_s(global);
 	my_mlx_pixel_put(global, 400, 500, 0x008000);
 	mlx_put_image_to_window(global->img.mlx, global->img.win, \
 		global->game.img, 0, 0);

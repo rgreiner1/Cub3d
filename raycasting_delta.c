@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting_delta.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 10:29:20 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/22 14:30:06 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:52:44 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	ft_delta_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
+	data->ray.opp_total_x += 1;
 }
 
 void	ft_delta_y(t_global *data)
@@ -76,14 +77,17 @@ void	ft_delta_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
+	data->ray.opp_total_y += 1;
 }
 
 void	init_ray(t_global *data)
 {
 	data->ray.dist_x = 0;
+	data->ray.opp_total_x = 0;
 	data->ray.pos_x_x = data->pos_player_x;
 	data->ray.pos_x_y = data->pos_player_y;
 	data->ray.dist_y = 0;
+	data->ray.opp_total_y = 0;
 	data->ray.pos_y_x = data->pos_player_x;
 	data->ray.pos_y_y = data->pos_player_y;
 }
