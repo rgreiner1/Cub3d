@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/28 12:54:42 by marvin           ###   ########.fr       */
+/*   Updated: 2024/02/28 13:30:39 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int		ft_hti(char *str)
 	int	value;
 	int result;
 	
-	i = 2;
+	i = 0;
 	value = 0;
 	result = 0;
     while (str[i]) 
@@ -65,34 +65,15 @@ int		ft_hti(char *str)
 
 void	ft_color(t_global *global)
 {
-	//int		i;
 	char	*str;
 	char	*s;
 
-	//i = 0;
 	str = ft_strdup(ft_convert_color(global->data.color_c[0]));
 	str = ft_strjoin_free(str, ft_convert_color(global->data.color_c[1]));
 	str = ft_strjoin_free(str, ft_convert_color(global->data.color_c[2]));
-	printf("color1 = %s\n", str);
 	s = ft_strdup(ft_convert_color(global->data.color_f[0]));
 	s = ft_strjoin_free(s, ft_convert_color(global->data.color_f[1]));
 	s = ft_strjoin_free(s, ft_convert_color(global->data.color_f[2]));
-	/*while (global->data.color_c[i])
-	{
-		i++;
-		str = ft_strjoin(str, ft_convert_color(global->data.color_c[i]));
-	}
-	*/
 	global->color_hex_c = ft_hti(str);
-	printf("color1 = %d\n", global->color_hex_c);
-	/*i = 0;
-	s = ft_strjoin("0x", ft_convert_color(global->data.color_f[i]));
-	while (global->data.color_f[i])
-	{
-		i++;
-		s = ft_strjoin(str, ft_convert_color(global->data.color_f[i]));
-	}
-	printf("color2 = %s\n", str);*/
 	global->color_hex_f = ft_hti(s);
-	printf("color2 = %d\n", global->color_hex_f);
 }
