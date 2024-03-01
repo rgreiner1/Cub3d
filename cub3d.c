@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/02/27 19:48:03 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/01 11:26:35 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int	main(int argc, char **argv)
 	t_global	global;
 	int			start;
 
-	(void)argc;
+	if (argc != 2)
+		exit (1);
 	start = 0;
 	parsing_map(argv, &global);
 	ft_save_map(&global, start);
