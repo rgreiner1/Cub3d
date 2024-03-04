@@ -3,26 +3,26 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
+#    By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/03/01 15:20:58 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/03/04 11:46:05 by ogregoir         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRCS    =	cub3d.c \
-			parse.c \
-			parse_walls.c \
-			draw_wall.c \
+			src/parse.c \
+			src/parse_walls.c \
+			src/draw_wall.c \
 			utils/utils.c \
 			utils/color.c \
-			verif_files.c \
-			verif_files2.c \
-			mini_map.c \
-			key_hooks.c \
-			raycasting.c \
-			raycasting_delta.c \
-			move.c \
+			src/verif_files.c \
+			src/verif_files2.c \
+			src/mini_map.c \
+			src/key_hooks.c \
+			src/raycasting.c \
+			src/raycasting_delta.c \
+			src/move.c \
 			
 	
 OBJS    =   ${SRCS:.c=.o}

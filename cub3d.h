@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/01 17:57:30 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/04 10:09:25 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,8 +114,8 @@ void	ft_create_ray(t_global *global, int color);
 void	check_angle_deg(t_global *data, char c);
 void	ft_search_side_x(t_global *data);
 void	ft_search_side_y(t_global *data);
-void    ft_delta_x(t_global *data);
-void    ft_delta_y(t_global *data);
+void	ft_delta_x(t_global *data);
+void	ft_delta_y(t_global *data);
 
 void	ft_error_files(t_global *global, int map, int data);
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
@@ -125,6 +125,6 @@ void	ft_create_rays(t_global *global);
 void	ft_next_move(t_global *global, int move, double step_x, double step_y);
 void	ft_create_f_s(t_global *global);
 void	ft_color(t_global *global);
-void    ft_draw_wall(t_global *global, int i);
+void	ft_draw_wall(t_global *global, int i);
 
 #endif
