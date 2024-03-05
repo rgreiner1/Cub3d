@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/04 11:53:45 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/05 17:48:27 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,26 +115,27 @@ int	ft_longest_y(t_global *global)
 
 void	ft_minimap(t_global *global)
 {
-	global->img.mlx = mlx_init();
-	global->img.win = mlx_new_window(global->img.mlx, WIDTH, HEIGHT, "cub3d");
-	global->game.img = mlx_new_image(global->img.mlx, WIDTH, HEIGHT);
-	global->img.img = mlx_new_image(global->img.mlx, \
+	ft_init_mlx(global);
+	global->minimap.ref = mlx_new_image(global->mlx, \
 		(ft_longest(global) + 1) * SIZE_MAP, \
 			(ft_longest_y(global) + 1) * SIZE_MAP);
-	global->img.addr = mlx_get_data_addr(global->img.img, \
-		&global->img.bits_per_pixel, &global->img.line_length, \
-			&global->img.endian);
-	global->game.addr = mlx_get_data_addr(global->game.img, \
+	global->minimap.addr = mlx_get_data_addr(global->minimap.ref, \
+		&global->minimap.bits_per_pixel, &global->minimap.line_length, \
+			&global->minimap.endian);
+	global->game.ref = mlx_new_image(global->mlx, WIDTH, HEIGHT);
+	global->game.addr = mlx_get_data_addr(global->game.ref, \
 		&global->game.bits_per_pixel, &global->game.line_length, \
 			&global->game.endian);
 	init_player_pos(global);
 	init_map(global, 0, 0);
 	ft_create_rays(global);
-	mlx_put_image_to_window(global->img.mlx, global->img.win, \
-		global->game.img, 0, 0);
-	mlx_put_image_to_window(global->img.mlx, global->img.win, \
-		global->img.img, 0, 0);
-	mlx_key_hook(global->img.win, ft_check_key, global);
-	mlx_hook(global->img.win, 17, 0, ft_destroy, global);
-	mlx_loop(global->img.mlx);
+	mlx_put_image_to_window(global->mlx, global->win, \
+		global->game.ref, 0, 0);
+	mlx_put_image_to_window(global->mlx, global->win, \
+		global->minimap.ref, 0, 0);
+	save_picture(global);
+	//put_img(global, global->data.wall_e, 0, 0);
+	//mlx_key_hook(global->win, ft_check_key, global);
+	mlx_hook(global->win, 17, 0, ft_destroy, global);
+	mlx_loop(global->mlx);
 }
