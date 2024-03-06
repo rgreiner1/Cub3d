@@ -22,11 +22,11 @@ char	*ft_copy_string(char *str, int j)
 	len = 0;
 	s = NULL;
 	j += 2;
-	while (str[j] == 32)
+	while (str[j] == 32 || str[j] == 9)
 		j++;
 	start = j;
-	while (str[j] != 32 && str[j] != '\0')
-	{
+	while (str[j] != 32 && str[j] != '\0' && str[j] != '\n')
+	{	
 		len++;
 		j++;
 	}
