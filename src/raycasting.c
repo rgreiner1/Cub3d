@@ -74,7 +74,7 @@ void	ft_search_side_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
-	data->ray.opp_total_x += data->ray.side_x;
+	data->ray.opp_total_x += data->ray.side_x_x;
 }
 
 void	ft_search_side_y(t_global *data)
@@ -96,17 +96,24 @@ void	ft_search_side_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
-	data->ray.opp_total_y += data->ray.side_y;
+	data->ray.opp_total_y += data->ray.side_y_y;
 }
 
 void	ft_create_rays(t_global *global)
 {
 	double	i;
 	double	tmp;
+	double	opp;
+	double	diff_opp;
+	double	alpha;
 
 	i = 0.0;
 	tmp = global->angle_deg;
-	global->angle_deg -= FOV / 2.0;
+	global->cpy_angle_deg = tmp;
+	opp = tan((double)FOV / 2 * M_PI / 180);
+	diff_opp = opp / (WIDTH / 2);
+	alpha = atan(opp) / M_PI * 180;
+	global->angle_deg -= alpha;
 	if (global->angle_deg < 0.0)
 		global->angle_deg = 360.0 + global->angle_deg;
 	ft_create_f_s(global);
@@ -117,8 +124,6 @@ void	ft_create_rays(t_global *global)
 		ft_search_side_y(global);
 		while (1)
 		{
-			if (global->ray.dist_x == global->ray.dist_y)
-				printf("%f\n", global->angle_deg);
 			if (global->ray.dist_x < global->ray.dist_y)
 			{
 				if (global->angle_deg >= 0.0 && global->angle_deg <= 180.0)
@@ -175,9 +180,22 @@ void	ft_create_rays(t_global *global)
 			}
 		}
 		ft_draw_wall(global, i);
-		global->angle_deg += FOV / WIDTH;
+		if (i <= WIDTH / 2)
+		{
+			opp -= diff_opp;
+			alpha = atan(opp) / M_PI * 180;
+			global->angle_deg = tmp - alpha;
+		}
+		else
+		{
+			opp += diff_opp;
+			alpha = atan(opp) / M_PI * 180;
+			global->angle_deg = tmp + alpha;
+		}
 		if (global->angle_deg >= 360.0)
-			global->angle_deg = 0.0;
+				global->angle_deg -= 360.0;
+		else if (global->angle_deg < 0.0)
+			global->angle_deg = 360.0 + global->angle_deg;
 		i++;
 	}
 	global->angle_deg = tmp;

@@ -15,7 +15,7 @@
 # define SIZE_MAP 8.0
 # define HEIGHT 1080.0
 # define WIDTH 1920.0
-# define FOV 120.0
+# define FOV 60.0
 
 # include <stdlib.h>
 # include <unistd.h>
@@ -83,6 +83,7 @@ typedef struct s_global
 	int				color_hex_c;
 	int				color_hex_f;
 	int				height;
+	double			cpy_angle_deg;
 }	t_global;
 
 //parse

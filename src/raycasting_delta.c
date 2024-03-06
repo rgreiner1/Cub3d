@@ -55,7 +55,7 @@ void	ft_delta_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
-	data->ray.opp_total_x += data->ray.side_x;
+	data->ray.opp_total_x += 1.0;
 }
 
 void	ft_delta_y(t_global *data)
@@ -77,7 +77,7 @@ void	ft_delta_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
-	data->ray.opp_total_y += data->ray.side_y;
+	data->ray.opp_total_y += 1.0;
 }
 
 void	init_ray(t_global *data)

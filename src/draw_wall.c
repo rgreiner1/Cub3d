@@ -15,14 +15,14 @@
 void	ft_draw_wall(t_global *global, int i)
 {
 	double	tmp_dist;
-	int		line;
-	int		drawstart;
-	int		drawend;
+	int	line;
+	int	drawstart;
+	int	drawend;
 
 	if (global->ray.dist_x < global->ray.dist_y)
-		tmp_dist = global->ray.opp_total_x;
+		tmp_dist = global->ray.dist_x * cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
 	else
-		tmp_dist = global->ray.opp_total_y;
+		tmp_dist = global->ray.dist_y * cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
 	line = HEIGHT / tmp_dist;
 	drawstart = -line / 2 + HEIGHT / 2;
 	if (drawstart < 0)
