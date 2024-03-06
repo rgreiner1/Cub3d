@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/03/04 11:46:05 by ogregoir         ###   ########.fr        #
+#    Updated: 2024/03/06 17:02:48 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,6 +16,8 @@ SRCS    =	cub3d.c \
 			src/draw_wall.c \
 			utils/utils.c \
 			utils/color.c \
+			utils/save_picture.c \
+			src/texture.c \
 			src/verif_files.c \
 			src/verif_files2.c \
 			src/mini_map.c \

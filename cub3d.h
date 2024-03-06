@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/04 10:09:25 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:11:15 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,28 +24,32 @@
 # include "mlx_linux/mlx.h"
 # include <math.h>
 
-typedef struct s_data
-{
-	char	*no;
-	char	*we;
-	char	*ea;
-	char	*so;
-	int		*color_c;
-	int		*color_f;
-	int		axes_x;
-	int		axes_y;
-}	t_data;
-
 typedef struct s_img
 {
-	void	*mlx;
-	void	*img;
-	void	*win;
+	void	*ref;
 	char	*addr;
 	int		bits_per_pixel;
 	int		line_length;
 	int		endian;
+	int		width;
+	int		height;
 }	t_img;
+
+typedef struct s_data
+{
+	char			*no;
+	char			*we;
+	char			*ea;
+	char			*so;
+	int				*color_c;
+	int				*color_f;
+	int				axes_x;
+	int				axes_y;
+	t_img			wall_n;
+	t_img			wall_s;
+	t_img			wall_e;
+	t_img			wall_o;
+}	t_data;
 
 typedef struct s_ray
 {
@@ -72,9 +76,11 @@ typedef struct s_ray
 typedef struct s_global
 {
 	struct s_data	data;
-	struct s_img	img;
-	struct s_img	game;
+	struct s_img	minimap;
+	t_img			game;
 	struct s_ray	ray;
+	void			*mlx;
+	void			*win;
 	double			angle_deg;
 	char			**map;
 	char			**files;
@@ -127,5 +133,8 @@ void	ft_next_move(t_global *global, int move, double step_x, double step_y);
 void	ft_create_f_s(t_global *global);
 void	ft_color(t_global *global);
 void	ft_draw_wall(t_global *global, int i);
+void	put_img(t_global *global, t_img picture, int y, int x);
+void	save_picture(t_global *global);
+void    ft_init_mlx(t_global *global);
 
 #endif

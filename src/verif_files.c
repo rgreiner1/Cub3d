@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/04 11:53:27 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/05 09:30:12 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,29 +25,25 @@ int	ft_save_data(t_global *global)
 		j = 0;
 		while (global->files[i][j] == 32)
 			j++;
-		if (ft_strncmp(global->files[i], "NO", j + 2) == 0 && \
-			global->data.no == NULL)
+		if (ft_strncmp(global->files[i], "NO", j + 2) == 0)
 		{
 			if (data < i)
 				data = i;
 			global->data.no = ft_copy_string(global->files[i], j);
 		}
-		else if (ft_strncmp(global->files[i], "SO", j + 2) == 0 && \
-			global->data.so == NULL)
+		else if (ft_strncmp(global->files[i], "SO", j + 2) == 0)
 		{
 			if (data < i)
 				data = i;
 			global->data.so = ft_copy_string(global->files[i], j);
 		}
-		else if (ft_strncmp(global->files[i], "WE", j + 2) == 0 && \
-			global->data.we == NULL)
+		else if (ft_strncmp(global->files[i], "WE", j + 2) == 0)
 		{
 			if (data < i)
 				data = i;
 			global->data.we = ft_copy_string(global->files[i], j);
 		}
-		else if (ft_strncmp(global->files[i], "EA", j + 2) == 0 && \
-			global->data.ea == NULL)
+		else if (ft_strncmp(global->files[i], "EA", j + 2) == 0)
 		{
 			if (data < i)
 				data = i;

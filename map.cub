@@ -1,11 +1,11 @@
 
-NO ./path_to_the_north_texture
+NO ./pictures/grenouille.xpm
 
-SO ./path_to_the_south_texture
+SO ./pictures/Damien_de_Bourg_Palette.xpm
 
-WE ./path_to_the_west_texture
+WE ./pictures/Damien_des_profondeurs.xpm
 
-EA ./path_to_the_east_texture
+EA ./pictures/Damien_Potter.xpm
 
 F 127,0,255
 C 255,255,255

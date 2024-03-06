@@ -1,28 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.c                                            :+:      :+:    :+:   */
+/*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/08 11:06:22 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/06 17:15:57 by marvin           ###   ########.fr       */
+/*   Created: 2024/03/05 13:33:47 by ogregoir          #+#    #+#             */
+/*   Updated: 2024/03/05 17:36:18 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cub3d.h"
+#include "../cub3d.h"
 
-int	main(int argc, char **argv)
+void	ft_init_mlx(t_global *global)
 {
-	t_global	global;
-	int			start;
-
-	if (argc != 2)
-		exit (1);
-	start = 0;
-	parsing_map(argv, &global);
-	ft_save_map(&global, start);
-	verif_map(&global);
-	ft_color(&global);
-	ft_minimap(&global);
+	global->mlx = mlx_init();
+	global->win = mlx_new_window(global->mlx, WIDTH, HEIGHT, "cub3d");
 }
+
