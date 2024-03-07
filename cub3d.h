@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/05 19:11:15 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/07 13:49:40 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 # define HEIGHT 1080.0
 # define WIDTH 1920.0
 # define FOV 60.0
-
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -69,8 +68,6 @@ typedef struct s_ray
 	double	dist_y;
 	double	pos_y_x;
 	double	pos_y_y;
-	double	opp_total_y;
-	double	opp_total_x;
 }	t_ray;
 
 typedef struct s_global

@@ -1,7 +1,10 @@
-NO sprites/basic.xpm
-SO sprites/basic.xpm
-WE sprites/basic.xpm
-EA sprites/basic.xpm
+NO ./pictures/grenouille.xpm
+
+SO ./pictures/Damien_de_Bourg_Palette.xpm
+
+WE ./pictures/Damien_des_profondeurs.xpm
+
+EA ./pictures/Damien_Potter.xpm
 
 F 255,0,255
 C 255,255,255
