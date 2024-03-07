@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/05 17:48:27 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/07 11:39:08 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,7 +135,7 @@ void	ft_minimap(t_global *global)
 		global->minimap.ref, 0, 0);
 	save_picture(global);
 	//put_img(global, global->data.wall_e, 0, 0);
-	//mlx_key_hook(global->win, ft_check_key, global);
+	mlx_key_hook(global->win, ft_check_key, global);
 	mlx_hook(global->win, 17, 0, ft_destroy, global);
 	mlx_loop(global->mlx);
 }
