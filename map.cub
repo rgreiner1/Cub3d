@@ -1,15 +1,15 @@
 
-NO ./pictures/grenouille.xpm
+NO ./pictures/axolote.xpm
 
-SO ./pictures/Damien_de_Bourg_Palette.xpm
+SO ./pictures/grenouille.xpm
 
-WE ./pictures/Damien_des_profondeurs.xpm
+WE ./pictures/pingouin.xpm
 
-EA ./pictures/Damien_Potter.xpm
+EA ./pictures/vache.xpm
 
-F 127,0,255
+
+F 125,0,255
 C 255,255,255
-
 
 1111111111111111111111111
 1000000000110000000000001
