@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:37:34 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/04 11:53:53 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:50:52 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,10 @@ void	ft_draw_wall(t_global *global, int i)
 	drawend = line / 2 + HEIGHT / 2;
 	if (drawend > HEIGHT)
 		drawend = HEIGHT - 1;
-	while (drawstart < drawend)
+/*	while (drawstart < drawend)
 	{
 		my_mlx_pixel_put2(global, i, drawstart, 0xFF0000);
 		drawstart++;
-	}
+	}*/
+	ft_text(global, i, drawstart, drawend);
 }

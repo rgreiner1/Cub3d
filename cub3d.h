@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/05 19:11:15 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:50:24 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,5 +136,6 @@ void	ft_draw_wall(t_global *global, int i);
 void	put_img(t_global *global, t_img picture, int y, int x);
 void	save_picture(t_global *global);
 void    ft_init_mlx(t_global *global);
+void	ft_text(t_global *global, int i, int drawstart, int drawend);
 
 #endif

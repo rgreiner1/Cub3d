@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/07 11:39:08 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:54:25 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void	ft_minimap(t_global *global)
 	global->game.addr = mlx_get_data_addr(global->game.ref, \
 		&global->game.bits_per_pixel, &global->game.line_length, \
 			&global->game.endian);
+	save_picture(global);
 	init_player_pos(global);
 	init_map(global, 0, 0);
 	ft_create_rays(global);
@@ -133,7 +134,7 @@ void	ft_minimap(t_global *global)
 		global->game.ref, 0, 0);
 	mlx_put_image_to_window(global->mlx, global->win, \
 		global->minimap.ref, 0, 0);
-	save_picture(global);
+	
 	//put_img(global, global->data.wall_e, 0, 0);
 	mlx_key_hook(global->win, ft_check_key, global);
 	mlx_hook(global->win, 17, 0, ft_destroy, global);
