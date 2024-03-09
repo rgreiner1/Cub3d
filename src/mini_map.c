@@ -6,7 +6,7 @@
 /*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/09 19:54:25 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/09 19:59:36 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,8 +135,7 @@ void	ft_minimap(t_global *global)
 	mlx_put_image_to_window(global->mlx, global->win, \
 		global->minimap.ref, 0, 0);
 	
-	//put_img(global, global->data.wall_e, 0, 0);
-	mlx_key_hook(global->win, ft_check_key, global);
+	mlx_hook(global->win, 2, 1L<<0, ft_check_key, global);
 	mlx_hook(global->win, 17, 0, ft_destroy, global);
 	mlx_loop(global->mlx);
 }

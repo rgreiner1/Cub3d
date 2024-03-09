@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_hooks.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/05 15:01:33 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:23:10 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,13 @@ void	ft_check_key2(int keycode, t_global *global)
 {
 	if (keycode == 65361)
 	{
-		global->angle_deg -= 10;
+		global->angle_deg -= 1;
 		if (global->angle_deg < 0)
 			global->angle_deg = 359;
 	}
 	if (keycode == 65363)
 	{
-		global->angle_deg += 10;
+		global->angle_deg += 1;
 		if (global->angle_deg > 359)
 			global->angle_deg = 0;
 	}

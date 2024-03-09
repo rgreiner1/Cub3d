@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/05 14:57:04 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/07 10:24:08 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,6 @@ void	ft_search_side_x(t_global *data)
 		data->ray.pos_x_y -= data->ray.side_x_y;
 	else
 		data->ray.pos_x_y += data->ray.side_x_y;
-	data->ray.opp_total_x += data->ray.side_x_x;
 }
 
 void	ft_search_side_y(t_global *data)
@@ -96,7 +95,6 @@ void	ft_search_side_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
-	data->ray.opp_total_y += data->ray.side_y_y;
 }
 
 void	ft_create_rays(t_global *global)
