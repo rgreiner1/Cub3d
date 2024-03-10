@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   verif_files.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/07 13:27:26 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/10 20:14:51 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,6 +67,8 @@ int	ft_save_data(t_global *global)
 				ft_error("map is incorrect");
 			break ;
 		}
+		else if(ft_strchr(global->files[i], '\n') == 0)
+			ft_error("character is not correct");
 		i++;
 	}
 	ft_error_files(global, i, data);

@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/03/06 17:02:48 by marvin           ###   ########.fr        #
+#    Updated: 2024/03/10 18:59:04 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS    =	cub3d.c \
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f
 CC		=	gcc
-CFLAGS  =   -Wall -Wextra -Werror
+CFLAGS  =   -Wall -Wextra -Werror -g -fsanitize=address
 NAME	= 	cub3d
 LIBFT	=	utils/libft/libft.a
 MLX_AR  =   mlx_linux/libmlx.a

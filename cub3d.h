@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/09 19:59:17 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:59:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,10 @@ typedef struct s_data
 	int				*color_f;
 	int				axes_x;
 	int				axes_y;
-	t_img			wall_n;
-	t_img			wall_s;
-	t_img			wall_e;
-	t_img			wall_o;
+	t_img			*wall_n;
+	t_img			*wall_s;
+	t_img			*wall_e;
+	t_img			*wall_o;
 }	t_data;
 
 typedef struct s_ray
@@ -133,6 +133,7 @@ void	ft_draw_wall(t_global *global, int i);
 void	put_img(t_global *global, t_img picture, int y, int x);
 void	save_picture(t_global *global);
 void    ft_init_mlx(t_global *global);
-void	ft_text(t_global *global, int i, int drawstart, int drawend);
+void	ft_text(t_global *global, int i, int drawstart, int drawend, t_img *texture);
+t_img	*correct_text(t_global *global);
 
 #endif

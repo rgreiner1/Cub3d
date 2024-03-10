@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:37:34 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/09 19:58:52 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/10 19:59:01 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ void	ft_draw_wall(t_global *global, int i)
 		my_mlx_pixel_put2(global, i, drawstart, 0xFF0000);
 		drawstart++;
 	}*/
-	ft_text(global, i, drawstart, drawend);
+	ft_text(global, i, drawstart, drawend, correct_text(global));
 }

@@ -3,13 +3,12 @@ NO ./pictures/Captaine-ferjul.xpm
 
 SO ./pictures/grenouille.xpm
 
-WE ./pictures/pingouin.xpm
+WE ./pictures/Damien-Potter.xpm
 
 EA ./pictures/vache.xpm
 
-
 F 125,0,255
-C 255,255,255
+C 255,102,102
 
 1111111111111111111111111
 1000000000110000000000001
