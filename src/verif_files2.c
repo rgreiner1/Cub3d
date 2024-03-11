@@ -26,7 +26,7 @@ char	*ft_copy_string(char *str, int j)
 		j++;
 	start = j;
 	while (str[j] != 32 && str[j] != '\0' && str[j] != '\n')
-	{	
+	{
 		len++;
 		j++;
 	}
@@ -98,8 +98,9 @@ int	*ft_copy_int(char *str, int j)
 		color[i] = ft_atoi(temp);
 		if (color[i] < 0 || color[i] > 255)
 			ft_error("the color is not between 0 and 255");
+		free(temp);
 		i++;
 	}
-	free(temp);
+	free_char(s);
 	return (color);
 }

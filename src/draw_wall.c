@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_wall.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:37:34 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/10 19:59:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/11 18:44:21 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,24 +16,41 @@ void	ft_draw_wall(t_global *global, int i)
 {
 	double	tmp_dist;
 	int		line;
-	int		drawstart;
-	int		drawend;
 
 	if (global->ray.dist_x < global->ray.dist_y)
-		tmp_dist = global->ray.dist_x * cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
-	else
-		tmp_dist = global->ray.dist_y * cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
-	line = (int)HEIGHT / tmp_dist;
-	drawstart = -line / 2.0 + HEIGHT / 2.0;
-	if (drawstart < 0)
-		drawstart = 0;
-	drawend = line / 2.0 + HEIGHT / 2.0;
-	if (drawend >= HEIGHT)
-		drawend = HEIGHT - 1.0;
-/*	while (drawstart < drawend)
 	{
-		my_mlx_pixel_put2(global, i, drawstart, 0xFF0000);
-		drawstart++;
-	}*/
-	ft_text(global, i, drawstart, drawend, correct_text(global));
+		tmp_dist = global->ray.dist_x * \
+			cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
+	}
+	else
+	{
+		tmp_dist = global->ray.dist_y * \
+			cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
+	}
+	line = (int)HEIGHT / tmp_dist;
+	global->drawstart = -line / 2.0 + HEIGHT / 2.0;
+	if (global->drawstart < 0)
+		global->drawstart = 0;
+	global->drawend = line / 2.0 + HEIGHT / 2.0;
+	ft_text(global, i, correct_text(global), \
+	global->drawend - global->drawstart);
+}
+
+void	my_mlx_pixel_put(t_global *global, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = global->minimap.addr + \
+		(y * global->minimap.line_length + x * \
+			(global->minimap.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
+}
+
+void	my_mlx_pixel_put2(t_global *global, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = global->game.addr + \
+		(y * global->game.line_length + x * (global->game.bits_per_pixel / 8));
+	*(unsigned int *)dst = color;
 }

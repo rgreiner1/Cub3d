@@ -3,26 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/10 19:11:36 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/11 18:30:32 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cub3d.h"
-
-void	check_angle_deg(t_global *data, char c)
-{
-	if (c == 'N')
-		data->angle_deg = 0.0;
-	else if (c == 'E')
-		data->angle_deg = 90.0;
-	else if (c == 'S')
-		data->angle_deg = 180.0;
-	else if (c == 'W')
-		data->angle_deg = 270.0;
-}
 
 void	ft_angle_x(t_global *data)
 {
@@ -191,7 +179,7 @@ void	ft_create_rays(t_global *global)
 			global->angle_deg = tmp + alpha;
 		}
 		if (global->angle_deg >= 360.0)
-				global->angle_deg -= 360.0;
+			global->angle_deg -= 360.0;
 		else if (global->angle_deg < 0.0)
 			global->angle_deg = 360.0 + global->angle_deg;
 		i++;

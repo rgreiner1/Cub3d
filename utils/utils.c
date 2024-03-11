@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/05 13:39:29 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:37:53 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,21 +60,16 @@ void	ft_error_files(t_global *global, int map, int data)
 	if (!global->data.color_f || !global->data.color_c)
 		ft_error("not enough arguments about colors");
 }
-//minimap
-void	my_mlx_pixel_put(t_global *global, int x, int y, int color)
-{
-	char	*dst;
 
-	dst = global->minimap.addr + \
-		(y * global->minimap.line_length + x * (global->minimap.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
-}
-//jeu
-void	my_mlx_pixel_put2(t_global *global, int x, int y, int color)
+void	free_char(char **str)
 {
-	char	*dst;
+	int	i;
 
-	dst = global->game.addr + \
-		(y * global->game.line_length + x * (global->game.bits_per_pixel / 8));
-	*(unsigned int *)dst = color;
+	i = 0;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
 }

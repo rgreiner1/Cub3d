@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   color.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/02/28 13:30:39 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/11 17:35:53 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_convert_color(int original)
 	int		color1;
 	int		color2;
 	char	*str;
-	
+
 	str = malloc(3);
 	color1 = original;
 	while (color1 >= 16)
@@ -42,38 +42,51 @@ char	*ft_convert_color(int original)
 	return (str);
 }
 
-int		ft_hti(char *str)
+int	ft_hti(char *str)
 {
-    int	i;
+	int	i;
 	int	value;
-	int result;
-	
+	int	result;
+
 	i = 0;
 	value = 0;
 	result = 0;
-    while (str[i]) 
+	while (str[i])
 	{
-        if (str[i] >= '0' && str[i] <= '9')
-            value = str[i] - '0';
-        else if (str[i] >= 'A' && str[i] <= 'F')
-            value = (str[i] - 'A' + 10);
+		if (str[i] >= '0' && str[i] <= '9')
+			value = str[i] - '0';
+		else if (str[i] >= 'A' && str[i] <= 'F')
+			value = (str[i] - 'A' + 10);
 		result = (result * 16) + value;
 		i++;
-    }
-    return (result);
+	}
+	return (result);
 }
 
-void	ft_color(t_global *global)
+void	ft_color(t_global *global, char *str, char *s)
 {
-	char	*str;
-	char	*s;
+	char	*tmp;
 
-	str = ft_strdup(ft_convert_color(global->data.color_c[0]));
-	str = ft_strjoin_free(str, ft_convert_color(global->data.color_c[1]));
-	str = ft_strjoin_free(str, ft_convert_color(global->data.color_c[2]));
-	s = ft_strdup(ft_convert_color(global->data.color_f[0]));
-	s = ft_strjoin_free(s, ft_convert_color(global->data.color_f[1]));
-	s = ft_strjoin_free(s, ft_convert_color(global->data.color_f[2]));
+	tmp = ft_convert_color(global->data.color_c[0]);
+	str = ft_strdup(tmp);
+	free(tmp);
+	tmp = ft_convert_color(global->data.color_c[1]);
+	str = ft_strjoin_free(str, tmp);
+	free(tmp);
+	tmp = ft_convert_color(global->data.color_c[2]);
+	str = ft_strjoin_free(str, tmp);
+	free (tmp);
+	tmp = ft_convert_color(global->data.color_f[0]);
+	s = ft_strdup(tmp);
+	free (tmp);
+	tmp = ft_convert_color(global->data.color_f[1]);
+	s = ft_strjoin_free(s, tmp);
+	free(tmp);
+	tmp = ft_convert_color(global->data.color_f[2]);
+	s = ft_strjoin_free(s, tmp);
+	free (tmp);
 	global->color_hex_c = ft_hti(str);
 	global->color_hex_f = ft_hti(s);
+	free (str);
+	free (s);
 }

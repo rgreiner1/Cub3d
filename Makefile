@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/03/10 18:59:04 by marvin           ###   ########.fr        #
+#    Updated: 2024/03/11 15:56:35 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ SRCS    =	cub3d.c \
 			src/parse_walls.c \
 			src/draw_wall.c \
 			utils/utils.c \
+			utils/utils2.c \
 			utils/color.c \
 			utils/save_picture.c \
 			src/texture.c \
@@ -30,7 +31,7 @@ SRCS    =	cub3d.c \
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f
 CC		=	gcc
-CFLAGS  =   -Wall -Wextra -Werror -g -fsanitize=address
+CFLAGS  =   -Wall -Wextra -Werror
 NAME	= 	cub3d
 LIBFT	=	utils/libft/libft.a
 MLX_AR  =   mlx_linux/libmlx.a

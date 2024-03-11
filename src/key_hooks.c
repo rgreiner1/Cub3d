@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/07 10:23:10 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:57:07 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void	ft_move(t_global *global, int move)
 int	ft_destroy(t_global *global)
 {
 	mlx_destroy_window(global->mlx, global->win);
-	//free global
 	exit (EXIT_SUCCESS);
 }
 

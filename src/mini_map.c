@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mini_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/10 19:09:01 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/11 18:40:04 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,16 +103,6 @@ void	init_player_pos(t_global *global)
 	}
 }
 
-int	ft_longest_y(t_global *global)
-{
-	int	len;
-
-	len = 0;
-	while (global->map[len])
-		len++;
-	return (len);
-}
-
 void	ft_minimap(t_global *global)
 {
 	ft_init_mlx(global);
@@ -134,7 +124,7 @@ void	ft_minimap(t_global *global)
 		global->game.ref, 0, 0);
 	mlx_put_image_to_window(global->mlx, global->win, \
 		global->minimap.ref, 0, 0);
-	mlx_hook(global->win, 2, 1L<<0, ft_check_key, global);
+	mlx_hook(global->win, 2, 1L << 0, ft_check_key, global);
 	mlx_hook(global->win, 17, 0, ft_destroy, global);
 	mlx_loop(global->mlx);
 }

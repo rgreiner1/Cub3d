@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:24 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/04 11:53:37 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/11 15:59:25 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	ft_check_wall(t_global *global, char **cpy, int i, int j)
 {
 	if (i == 0)
 		ft_error("Map is not closed by walls");
-	if (i == global->height - 1)
+	if (i == ft_map_len(global->map) - 1)
 		ft_error("Map is not closed by walls");
 	if (cpy[i - 1][j] == '\n' || cpy[i - 1][j] == 32 || cpy[i - 1][j] == '\0')
 		ft_error("Map is not closed by walls");
@@ -75,4 +75,5 @@ void	verif_map(t_global *global)
 		i++;
 	}
 	ft_verif_map_content(cpy, 0, 0, 0);
+	free_char(cpy);
 }

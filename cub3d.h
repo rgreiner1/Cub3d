@@ -3,18 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/10 19:59:29 by marvin           ###   ########.fr       */
+/*   Updated: 2024/03/11 18:22:38 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define SIZE_MAP 8.0
-# define HEIGHT 1080.0
-# define WIDTH 1920.0
+# define HEIGHT 600.0
+# define WIDTH 800.0
 # define FOV 60.0
 # include <stdlib.h>
 # include <unistd.h>
@@ -87,6 +87,8 @@ typedef struct s_global
 	int				color_hex_f;
 	int				height;
 	double			cpy_angle_deg;
+	int				drawstart;
+	int				drawend;
 }	t_global;
 
 //parse
@@ -128,12 +130,14 @@ void	init_ray(t_global *data);
 void	ft_create_rays(t_global *global);
 void	ft_next_move(t_global *global, int move, double step_x, double step_y);
 void	ft_create_f_s(t_global *global);
-void	ft_color(t_global *global);
+void	ft_color(t_global *global, char *str, char *s);
 void	ft_draw_wall(t_global *global, int i);
 void	put_img(t_global *global, t_img picture, int y, int x);
 void	save_picture(t_global *global);
-void    ft_init_mlx(t_global *global);
-void	ft_text(t_global *global, int i, int drawstart, int drawend, t_img *texture);
+void	ft_init_mlx(t_global *global);
+void	ft_text(t_global *global, int i, t_img *texture, int lineh);
 t_img	*correct_text(t_global *global);
+void	free_char(char **str);
+int		ft_max(int a, int b);
 
 #endif
