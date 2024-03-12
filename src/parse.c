@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:31:46 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/11 10:53:44 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:41:21 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,10 @@ void	ft_verif_map_content(char **cpy, int player, int i, int j)
 			if (cpy[i][j] != 'N' && cpy[i][j] != 'S' && \
 			cpy[i][j] != 'E' && cpy[i][j] != 'W' && cpy[i][j] != 32 && \
 			cpy[i][j] != '0' && cpy[i][j] != '1' && cpy[i][j] != '\n')
+			{
+				printf("i == %d j == %d %d\n", i, j, cpy[i][j]);
 				ft_error("Invalid characters");
+			}
 			j++;
 		}
 		i++;

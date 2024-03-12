@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 18:22:38 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:54:14 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	verif_map(t_global *global);
 void	ft_verif_map_content(char **cpy, int player, int i, int j);
 int		*ft_copy_int(char *str, int j);
 char	*ft_copy_string(char *str, int j);
-int		ft_save_data(t_global *global);
+int		ft_save_data(t_global *global, int i, int j, int data);
 
 //utils
 void	ft_error(char *str);
@@ -139,5 +139,7 @@ void	ft_text(t_global *global, int i, t_img *texture, int lineh);
 t_img	*correct_text(t_global *global);
 void	free_char(char **str);
 int		ft_max(int a, int b);
+int		ft_detect_int(t_global *global, int i, int j);
+int		ft_detect_char(t_global *g, int i, int j);
 
 #endif
