@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/12 15:19:39 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:01:07 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,6 +146,8 @@ void	ft_text(t_global *global, int i, t_img *texture, int lineh);
 t_img	*correct_text(t_global *global);
 void	free_char(char **str);
 int		ft_max(int a, int b);
+int		ft_detect_int(t_global *global, int i, int j);
+int		ft_detect_char(t_global *g, int i, int j);
 double	ft_create_rays4(t_global *global, double tmp, double opp);
 double	ft_create_rays5(t_global *global, double tmp, double opp);
 void	ft_create_rays6(t_global *global);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:24 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 15:59:25 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 18:50:55 by ogregoir         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,22 +20,6 @@ int	ft_map_len(char **map)
 	while (map[len])
 		len++;
 	return (len);
-}
-
-char	**init_cpy(t_global *global)
-{
-	char	**cp;
-	int		i;
-
-	i = -1;
-	cp = malloc(sizeof(char *) * (ft_map_len(global->map) + 1));
-	while (++i < ft_map_len(global->map))
-	{
-		cp[i] = ft_calloc(ft_longest(global), 1);
-		cp[i] = ft_memcpy(cp[i], global->map[i], ft_strlen(global->map[i]));
-	}
-	cp[i] = NULL;
-	return (cp);
 }
 
 void	ft_check_wall(t_global *global, char **cpy, int i, int j)
@@ -60,7 +44,7 @@ void	verif_map(t_global *global)
 	int		i;
 	int		j;
 
-	cpy = init_cpy(global);
+	cpy = global->map;
 	i = 0;
 	while (cpy[i])
 	{
@@ -75,5 +59,4 @@ void	verif_map(t_global *global)
 		i++;
 	}
 	ft_verif_map_content(cpy, 0, 0, 0);
-	free_char(cpy);
 }

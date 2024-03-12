@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/12 16:50:04 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 19:00:07 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,45 +30,11 @@ int	ft_save_data(t_global *global, int i, int j, int data)
 		j = 0;
 		while (global->files[i][j] == 32)
 			j++;
-		if ((ft_strncmp(global->files[i] + j, "NO", 2) == 0) \
-			&& !global->data.no)
+		if (ft_detect_char(global, i, j) == 0 || \
+			ft_detect_int(global, i, j) == 0)
 		{
-			if (data < i)
+			if (i > data)
 				data = i;
-			global->data.no = ft_copy_string(global->files[i], j);
-		}
-		else if ((ft_strncmp(global->files[i] + j, "SO", 2) == 0) && \
-			!global->data.so)
-		{
-			if (data < i)
-				data = i;
-			global->data.so = ft_copy_string(global->files[i], j);
-		}
-		else if ((ft_strncmp(global->files[i] + j, "WE", 2) == 0) && \
-			!global->data.we)
-		{
-			if (data < i)
-				data = i;
-			global->data.we = ft_copy_string(global->files[i], j);
-		}
-		else if ((ft_strncmp(global->files[i] + j, "EA", 2) == 0) && \
-			!global->data.ea)
-		{
-			if (data < i)
-				data = i;
-			global->data.ea = ft_copy_string(global->files[i], j);
-		}
-		else if (global->files[i][j] == 'F' && !global->data.color_f)
-		{
-			if (data < i)
-				data = i;
-			global->data.color_f = ft_copy_int(global->files[i], j);
-		}
-		else if (global->files[i][j] == 'C' && !global->data.color_c)
-		{
-			if (data < i)
-				data = i;
-			global->data.color_c = ft_copy_int(global->files[i], j);
 		}
 		else if (ft_strchr(global->files[i], '1') != 0)
 		{
@@ -77,10 +43,7 @@ int	ft_save_data(t_global *global, int i, int j, int data)
 			break ;
 		}
 		else if (global->files[i][0] != '\n')
-		{
-			printf("%s", global->files[i]);
 			ft_error("data incorrect");
-		}
 		i++;
 	}
 	ft_error_files(global, i, data);
