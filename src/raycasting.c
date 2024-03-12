@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/14 11:14:35 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 18:30:32 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:20:22 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,106 +83,4 @@ void	ft_search_side_y(t_global *data)
 		data->ray.pos_y_y -= data->ray.side_y_y;
 	else
 		data->ray.pos_y_y += data->ray.side_y_y;
-}
-
-void	ft_create_rays(t_global *global)
-{
-	double	i;
-	double	tmp;
-	double	opp;
-	double	diff_opp;
-	double	alpha;
-
-	i = 0.0;
-	tmp = global->angle_deg;
-	global->cpy_angle_deg = tmp;
-	opp = tan((double)FOV / 2 * M_PI / 180);
-	diff_opp = opp / (WIDTH / 2);
-	alpha = atan(opp) / M_PI * 180;
-	global->angle_deg -= alpha;
-	if (global->angle_deg < 0.0)
-		global->angle_deg = 360.0 + global->angle_deg;
-	ft_create_f_s(global);
-	while (i <= WIDTH)
-	{
-		init_ray(global);
-		ft_search_side_x(global);
-		ft_search_side_y(global);
-		while (1)
-		{
-			if (global->ray.dist_x < global->ray.dist_y)
-			{
-				if (global->angle_deg >= 0.0 && global->angle_deg <= 180.0)
-				{
-					if (global->map[(int)global->ray.pos_x_y] \
-						[(int)global->ray.pos_x_x] == '1')
-					{
-						my_mlx_pixel_put(global, \
-							global->ray.pos_x_x * SIZE_MAP, \
-								global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
-						break ;
-					}
-					ft_delta_x(global);
-				}
-				else
-				{
-					if (global->map[(int)global->ray.pos_x_y] \
-						[(int)global->ray.pos_x_x - 1] == '1')
-					{
-						my_mlx_pixel_put(global, \
-							global->ray.pos_x_x * SIZE_MAP, \
-								global->ray.pos_x_y * SIZE_MAP, 0xFF0000);
-						break ;
-					}
-					ft_delta_x(global);
-				}
-			}
-			else
-			{
-				if (global->angle_deg >= 90.0 && global->angle_deg <= 270.0)
-				{
-					if (global->map[(int)global->ray.pos_y_y] \
-						[(int)global->ray.pos_y_x] == '1')
-					{
-						my_mlx_pixel_put(global, \
-							global->ray.pos_y_x * SIZE_MAP, \
-								global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
-						break ;
-					}
-					ft_delta_y(global);
-				}
-				else
-				{
-					if (global->map[(int)global->ray.pos_y_y - 1] \
-						[(int)global->ray.pos_y_x] == '1')
-					{
-						my_mlx_pixel_put(global, \
-							global->ray.pos_y_x * SIZE_MAP, \
-								global->ray.pos_y_y * SIZE_MAP, 0xFF0000);
-						break ;
-					}
-					ft_delta_y(global);
-				}
-			}
-		}
-		ft_draw_wall(global, i);
-		if (i <= WIDTH / 2)
-		{
-			opp -= diff_opp;
-			alpha = atan(opp) / M_PI * 180;
-			global->angle_deg = tmp - alpha;
-		}
-		else
-		{
-			opp += diff_opp;
-			alpha = atan(opp) / M_PI * 180;
-			global->angle_deg = tmp + alpha;
-		}
-		if (global->angle_deg >= 360.0)
-			global->angle_deg -= 360.0;
-		else if (global->angle_deg < 0.0)
-			global->angle_deg = 360.0 + global->angle_deg;
-		i++;
-	}
-	global->angle_deg = tmp;
 }

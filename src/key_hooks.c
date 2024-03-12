@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/13 10:10:04 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 15:57:07 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:58:34 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ void	ft_move(t_global *global, int move)
 	global->game.ref = mlx_new_image(global->mlx, WIDTH, HEIGHT);
 	init_map(global, 0, 0);
 	ft_next_move(global, move, 0.0, 0.0);
-	ft_create_rays(global);
+	ft_create_rays(global, global->angle_deg, -1.0, \
+		tan((double)FOV / 2 * M_PI / 180));
 	mlx_put_image_to_window(global->mlx, global->win, \
 		global->game.ref, 0, 0);
 	mlx_put_image_to_window(global->mlx, \
@@ -56,7 +57,8 @@ void	ft_check_key2(int keycode, t_global *global)
 		(ft_longest_y(global) + 1) * SIZE_MAP);
 	global->game.ref = mlx_new_image(global->mlx, WIDTH, HEIGHT);
 	init_map(global, 0, 0);
-	ft_create_rays(global);
+	ft_create_rays(global, global->angle_deg, -1.0, \
+		tan((double)FOV / 2 * M_PI / 180));
 	mlx_put_image_to_window(global->mlx, global->win, \
 		global->game.ref, 0, 0);
 	mlx_put_image_to_window(global->mlx, \

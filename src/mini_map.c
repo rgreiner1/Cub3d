@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/12 17:54:30 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 18:40:04 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:58:38 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,8 @@ void	ft_minimap(t_global *global)
 	save_picture(global);
 	init_player_pos(global);
 	init_map(global, 0, 0);
-	ft_create_rays(global);
+	ft_create_rays(global, global->angle_deg, -1.0, \
+		tan((double)FOV / 2 * M_PI / 180));
 	mlx_put_image_to_window(global->mlx, global->win, \
 		global->game.ref, 0, 0);
 	mlx_put_image_to_window(global->mlx, global->win, \

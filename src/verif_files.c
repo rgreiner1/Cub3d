@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/11 17:25:29 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 16:50:04 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,16 +18,12 @@ void	ft_init_wall(t_global *global)
 	global->data.ea = NULL;
 	global->data.we = NULL;
 	global->data.so = NULL;
+	global->data.color_f = NULL;
+	global->data.color_c = NULL;
 }
 
-int	ft_save_data(t_global *global)
+int	ft_save_data(t_global *global, int i, int j, int data)
 {
-	int	i;
-	int	j;
-	int	data;
-
-	i = 0;
-	data = 0;
 	ft_init_wall(global);
 	while (global->files[i] != NULL)
 	{
@@ -123,7 +119,7 @@ void	ft_save_map(t_global *global, int start)
 	int	i;
 	int	len;
 
-	start = ft_save_data(global);
+	start = ft_save_data(global, 0, 0, 0);
 	i = start;
 	len = 0;
 	ft_check_space_map(global, start);

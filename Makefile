@@ -6,7 +6,7 @@
 #    By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/08 11:08:57 by rgreiner          #+#    #+#              #
-#    Updated: 2024/03/11 15:56:35 by rgreiner         ###   ########.fr        #
+#    Updated: 2024/03/12 15:18:13 by rgreiner         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,8 +26,9 @@ SRCS    =	cub3d.c \
 			src/raycasting.c \
 			src/raycasting_delta.c \
 			src/move.c \
-			
-	
+			src/create_rays.c \
+			src/create_rays2.c \
+
 OBJS    =   ${SRCS:.c=.o}
 RM      =   rm -f
 CC		=	gcc

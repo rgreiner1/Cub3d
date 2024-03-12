@@ -6,15 +6,15 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 18:22:38 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 15:19:39 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define SIZE_MAP 8.0
-# define HEIGHT 600.0
-# define WIDTH 800.0
+# define HEIGHT 1080.0
+# define WIDTH 1920.0
 # define FOV 60.0
 # include <stdlib.h>
 # include <unistd.h>
@@ -87,8 +87,15 @@ typedef struct s_global
 	int				color_hex_f;
 	int				height;
 	double			cpy_angle_deg;
-	int				drawstart;
+	int				dstart;
 	int				drawend;
+	int				texy;
+	int				texx;
+	double			step;
+	double			postart;
+	unsigned int	color;
+	double			diff_opp;
+	double			alpha;
 }	t_global;
 
 //parse
@@ -97,7 +104,7 @@ void	verif_map(t_global *global);
 void	ft_verif_map_content(char **cpy, int player, int i, int j);
 int		*ft_copy_int(char *str, int j);
 char	*ft_copy_string(char *str, int j);
-int		ft_save_data(t_global *global);
+int		ft_save_data(t_global *global, int i, int j, int data);
 
 //utils
 void	ft_error(char *str);
@@ -127,7 +134,7 @@ void	ft_error_files(t_global *global, int map, int data);
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color);
 void	my_mlx_pixel_put2(t_global *global, int x, int y, int color);
 void	init_ray(t_global *data);
-void	ft_create_rays(t_global *global);
+void	ft_create_rays(t_global *global, double tmp, double i, double opp);
 void	ft_next_move(t_global *global, int move, double step_x, double step_y);
 void	ft_create_f_s(t_global *global);
 void	ft_color(t_global *global, char *str, char *s);
@@ -139,5 +146,9 @@ void	ft_text(t_global *global, int i, t_img *texture, int lineh);
 t_img	*correct_text(t_global *global);
 void	free_char(char **str);
 int		ft_max(int a, int b);
+double	ft_create_rays4(t_global *global, double tmp, double opp);
+double	ft_create_rays5(t_global *global, double tmp, double opp);
+void	ft_create_rays6(t_global *global);
+void	ft_create_rays7(t_global *global);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 13:33:47 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/11 18:16:31 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:34:31 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,33 +48,27 @@ int	ft_color_texture(t_global *global, t_img *texture)
 
 void	ft_text(t_global *global, int i, t_img *texture, int lineh)
 {
-	double			step;
-	double			postart;
-	int				texy;
-	int				texx;
-	unsigned int	color;
-
-	step = 1.0 * texture->height / lineh;
-	postart = (global->drawstart - HEIGHT / 2 + lineh / 2) * step;
-	global->drawstart = ft_max(0, global->drawstart);
-	while (global->drawstart < global->drawend)
+	global->step = 1.0 * texture->height / lineh;
+	global->postart = (global->dstart - HEIGHT / 2 + lineh / 2) * global->step;
+	global->dstart = ft_max(0, global->dstart);
+	while (global->dstart < global->drawend)
 	{
-		texy = (int)postart;
-		if (texy >= 0 && texy < texture->height)
+		global->texy = (int)global->postart;
+		if (global->texy >= 0 && global->texy < texture->height)
 		{
-			texx = ft_color_texture(global, texture);
-			if (texx >= 0 && texx < texture->width)
+			global->texx = ft_color_texture(global, texture);
+			if (global->texx >= 0 && global->texx < texture->width)
 			{
-				color = *(unsigned int *)(texture->addr + \
-					(texy * texture->line_length) + \
-						(texx * texture->bits_per_pixel / 8));
-				if (global->drawstart >= 0 && global->drawstart < HEIGHT)
-					my_mlx_pixel_put2(global, i, global->drawstart, color);
+				global->color = *(unsigned int *)(texture->addr + \
+					(global->texy * texture->line_length) + \
+						(global->texx * texture->bits_per_pixel / 8));
+				if (global->dstart >= 0 && global->dstart < HEIGHT)
+					my_mlx_pixel_put2(global, i, global->dstart, global->color);
 			}
 		}
-		if (global->drawstart > HEIGHT)
+		if (global->dstart > HEIGHT)
 			return ;
-		postart += step;
-		global->drawstart++;
+		global->postart += global->step;
+		global->dstart++;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 16:37:34 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/11 18:44:21 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 14:59:03 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,12 @@ void	ft_draw_wall(t_global *global, int i)
 			cos((global->cpy_angle_deg - global->angle_deg) * M_PI / 180);
 	}
 	line = (int)HEIGHT / tmp_dist;
-	global->drawstart = -line / 2.0 + HEIGHT / 2.0;
-	if (global->drawstart < 0)
-		global->drawstart = 0;
+	global->dstart = -line / 2.0 + HEIGHT / 2.0;
+	if (global->dstart < 0)
+		global->dstart = 0;
 	global->drawend = line / 2.0 + HEIGHT / 2.0;
 	ft_text(global, i, correct_text(global), \
-	global->drawend - global->drawstart);
+	global->drawend - global->dstart);
 }
 
 void	my_mlx_pixel_put(t_global *global, int x, int y, int color)

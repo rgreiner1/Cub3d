@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:31:46 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/11 10:53:44 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/12 17:32:37 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,11 @@ void	ft_verif_map_content(char **cpy, int player, int i, int j)
 				ft_error("Multiples players");
 			if (cpy[i][j] != 'N' && cpy[i][j] != 'S' && \
 			cpy[i][j] != 'E' && cpy[i][j] != 'W' && cpy[i][j] != 32 && \
-			cpy[i][j] != '0' && cpy[i][j] != '1' && cpy[i][j] != '\n')
-				ft_error("Invalid characters");
+			cpy[i][j] != '0' && cpy[i][j] != '1' && cpy[i][j] != '\n' && cpy[i][j] != 5)
+				{
+					printf("%c\n", cpy[i][j]);
+					ft_error("Invalid characters");
+				}
 			j++;
 		}
 		i++;
