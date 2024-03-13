@@ -77,29 +77,43 @@ char	*ft_sup_space(char *str)
 	return (s);
 }
 
-int	*ft_copy_int(char *str, int j)
+void	ft_check_nbr_color(char **str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i] && str[i][0] != '\n')
+	{
+	//	printf("%s\n", str[i]);
+		i++;
+	}
+	if (i != 3)
+		ft_error("Invalid color numbers");
+}
+
+int	*ft_copy_int(char *str, int j, int i)
 {
 	int		*color;
 	char	**s;
 	char	*temp;
-	int		i;
 
-	i = 0;
 	color = malloc(sizeof(int) * 3);
+	if (!color)
+		ft_error("Malloc Failed");
 	j += 1;
 	while (str[j] == 32)
 		j++;
 	temp = ft_substr(str, j, ft_strlen(str));
 	s = ft_split(temp, ',');
+	ft_check_nbr_color(s);
 	free(temp);
-	while (s[i])
+	while (s[++i])
 	{
 		temp = ft_sup_space(s[i]);
 		color[i] = ft_atoi(temp);
 		if (color[i] < 0 || color[i] > 255)
 			ft_error("the color is not between 0 and 255");
 		free(temp);
-		i++;
 	}
 	free_char(s);
 	return (color);

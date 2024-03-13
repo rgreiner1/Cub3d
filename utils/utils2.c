@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 15:56:14 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/12 19:01:39 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:43:29 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,12 +70,12 @@ int	ft_detect_int(t_global *global, int i, int j)
 {
 	if (global->files[i][j] == 'F' && !global->data.color_f)
 	{
-		global->data.color_f = ft_copy_int(global->files[i], j);
+		global->data.color_f = ft_copy_int(global->files[i], j, -1);
 		return (0);
 	}
 	else if (global->files[i][j] == 'C' && !global->data.color_c)
 	{
-		global->data.color_c = ft_copy_int(global->files[i], j);
+		global->data.color_c = ft_copy_int(global->files[i], j, -1);
 		return (0);
 	}
 	return (1);

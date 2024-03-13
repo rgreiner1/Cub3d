@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/04 15:25:57 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/11 17:36:41 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:36:34 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ static t_img	*init_pic(t_global *global, char *path)
 	t_img	*picture;
 
 	picture = malloc(sizeof(t_img));
+	if (!picture)
+		ft_error("Malloc Failed");
 	if (open(path, R_OK) == -1)
 		ft_error("incorrect PATH");
 	picture->ref = mlx_xpm_file_to_image(global->mlx \

@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 11:31:46 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/12 18:59:16 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:31:27 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,8 @@ void	parsing_map(char **argv, t_global *global)
 	ft_axe_y(fd, global);
 	fd = open(argv[1], O_RDONLY);
 	global->files = malloc((sizeof(char *) * (global->height + 1)));
+	if (!global->files)
+		ft_error("Malloc Failed");
 	global->files[i] = get_next_line(fd);
 	while (global->files[i] != NULL)
 	{

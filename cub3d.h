@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/12 19:01:07 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:40:34 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ typedef struct s_global
 void	parsing_map(char **argv, t_global *global);
 void	verif_map(t_global *global);
 void	ft_verif_map_content(char **cpy, int player, int i, int j);
-int		*ft_copy_int(char *str, int j);
+int		*ft_copy_int(char *str, int j, int i);
 char	*ft_copy_string(char *str, int j);
 int		ft_save_data(t_global *global, int i, int j, int data);
 

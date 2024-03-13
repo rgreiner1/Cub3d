@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 18:45:50 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/12 19:00:07 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/13 12:37:25 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,14 @@ void	ft_save_map(t_global *global, int start)
 		i++;
 	len = i - start;
 	global->map = malloc(sizeof(char *) * (len + 1));
+	if (!global->map)
+		ft_error("Malloc Failed");
 	i = 0;
 	while (global->files[start] && (i != len))
 	{
 		global->map[i] = ft_strdup(global->files[start]);
+		if (!global->map[i])
+			ft_error("Malloc Failed");
 		i++;
 		start++;
 	}

@@ -6,7 +6,7 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 12:29:14 by ogregoir          #+#    #+#             */
-/*   Updated: 2024/03/11 17:35:53 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/13 16:05:41 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ char	ft_convert_char(int color)
 {
 	char	c;
 
+	if (color == 0)
+		return (48);
 	if (color > 9)
 	{
 		c = (color - 10) + 'A';
@@ -32,6 +34,8 @@ char	*ft_convert_color(int original)
 	char	*str;
 
 	str = malloc(3);
+	if (!str)
+		ft_error("Malloc Failed");
 	color1 = original;
 	while (color1 >= 16)
 		color1 = color1 / 16;
