@@ -1,10 +1,10 @@
 NO ./pictures/grenouille.xpm
 
-SO ./pictures/Damien_de_Bourg_Palette.xpm
+SO ./pictures/Damien-de-bourg-palette.xpm
 
-WE ./pictures/Damien_des_profondeurs.xpm
+WE ./pictures/Damien-des-profondeurs.xpm
 
-EA ./pictures/Damien_Potter.xpm
+EA ./pictures/Damien-Potter.xpm
 
 F 255,0,255
 C 255,102,102

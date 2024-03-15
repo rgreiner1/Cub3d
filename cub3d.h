@@ -6,15 +6,15 @@
 /*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 13:14:51 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/13 12:40:34 by rgreiner         ###   ########.fr       */
+/*   Updated: 2024/03/15 14:02:27 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
 # define SIZE_MAP 8.0
-# define HEIGHT 1080.0
-# define WIDTH 1920.0
+# define HEIGHT 400.0
+# define WIDTH 600.0
 # define FOV 60.0
 # include <stdlib.h>
 # include <unistd.h>
@@ -105,6 +105,7 @@ void	ft_verif_map_content(char **cpy, int player, int i, int j);
 int		*ft_copy_int(char *str, int j, int i);
 char	*ft_copy_string(char *str, int j);
 int		ft_save_data(t_global *global, int i, int j, int data);
+void	ft_verif_comma(char *str);
 
 //utils
 void	ft_error(char *str);

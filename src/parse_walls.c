@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parse_walls.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ogregoir <ogregoir@student.42.fr>          +#+  +:+       +#+        */
+/*   By: rgreiner <rgreiner@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/10 12:32:24 by rgreiner          #+#    #+#             */
-/*   Updated: 2024/03/12 18:50:55 by ogregoir         ###   ########.fr       */
+/*   Updated: 2024/03/15 10:15:45 by rgreiner         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,20 @@ void	verif_map(t_global *global)
 		i++;
 	}
 	ft_verif_map_content(cpy, 0, 0, 0);
+}
+
+void	ft_verif_comma(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == ',')
+		{
+			if (str[i + 1] != '\0' && str[i + 1] == ',')
+				ft_error("too much comma");
+		}
+		i++;
+	}
 }

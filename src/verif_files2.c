@@ -83,10 +83,7 @@ void	ft_check_nbr_color(char **str)
 
 	i = 0;
 	while (str[i] && str[i][0] != '\n')
-	{
-	//	printf("%s\n", str[i]);
 		i++;
-	}
 	if (i != 3)
 		ft_error("Invalid color numbers");
 }
@@ -104,6 +101,7 @@ int	*ft_copy_int(char *str, int j, int i)
 	while (str[j] == 32)
 		j++;
 	temp = ft_substr(str, j, ft_strlen(str));
+	ft_verif_comma(temp);
 	s = ft_split(temp, ',');
 	ft_check_nbr_color(s);
 	free(temp);
